@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/backgroundcolor"
+    tools:context=".VenteActivity">
+
+    <!--Layout englobante tout l'ecran -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="#EEEEEE"
+        android:weightSum="5"
+        >
+
+        <!--Layout Partie Gauche-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="#6D4C41"
+            android:layout_weight="3"
+            >
+
+            <!--Layout englobante-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#c7c2c0"
+                android:padding="15dp"
+                android:weightSum="3"
+                >
+
+                <!--Layout Englobante la listView-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="#f4f1f0"
+                    android:padding="15dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="15dp"
+                    android:weightSum="4"
+                    >
+
+                    <!--Layout ListView-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="#edb6a2"
+                        android:padding="15dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="15dp"
+                        >
+
+
+                    </LinearLayout>
+
+                    <!--Layout Total-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="#3d9a3e"
+                        android:padding="15dp"
+                        android:layout_weight="3"
+                        android:layout_marginBottom="15dp"
+                        >
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--Layout Englobante le clavier et validation -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="#f4f1f0"
+                    android:padding="15dp"
+                    android:layout_weight="2"
+                    android:weightSum="2"
+                    android:baselineAligned="false"
+                    >
+
+                    <!--Petit Layout de Gauche Client Et Validation-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="#f6cec0"
+                        android:padding="15dp"
+                        android:layout_weight="1"
+                        >
+
+                        <!--Layout Bouton Client-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal"
+                            android:background="#f6eae5"
+                            android:padding="15dp"
+                            android:layout_weight="0"
+                            >
+
+
+                        </LinearLayout>
+
+                        <!--Layout Bouton Validation.-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="#f6eae5"
+                            android:padding="15dp"
+                            android:layout_weight="0"
+                            android:layout_marginTop="10dp"
+                            >
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--Layout Clavier-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="#765e55"
+                        android:padding="15dp"
+                        android:layout_weight="1"
+                        >
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Layout Partie Droite-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/backgroundcolor"
+            android:layout_weight="2"
+            android:layout_marginStart="10dp"
+            >
+
+            <!--Banner de Recherche-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="#004D40"
+                android:gravity="end"
+
+                >
+
+                <EditText
+                    android:id="@+id/rechercheProduit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/rechercherUnProduit"
+                    android:drawableEnd="@drawable/ic_search_black_24dp"
+                    android:background="#FFF"
+                    android:layout_marginTop="12.5dp"
+                    android:layout_marginEnd="10dp"
+                    />
+
+            </LinearLayout>
+
+            <!--Lines-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <GridView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/gridVente"
+                    android:numColumns="4">
+
+                </GridView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

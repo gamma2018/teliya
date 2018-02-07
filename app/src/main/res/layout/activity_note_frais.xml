@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".facture.NoteFraisActivity"
+    android:orientation="vertical"
+    android:background="@color/backgroundcolor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginTop="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            >
+            <Button
+                android:id="@+id/creer_note_frais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/creerNote"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:drawableEnd="@drawable/ic_add_black_24dp"
+                android:background="#fff"
+                android:layout_marginStart="10dp"
+
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:gravity="end"
+            >
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/rechercherNote"
+                android:drawableEnd="@drawable/ic_search_black_24dp"
+                android:background="#FFF"
+                android:layout_marginTop="12.5dp"
+                android:layout_marginEnd="10dp"
+                android:padding="8dp"
+                android:layout_gravity="end"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        >
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="4"
+            android:id="@+id/gridNoteFrais">
+
+        </GridView>
+
+    </LinearLayout>
+
+</LinearLayout>
