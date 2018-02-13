@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp" android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@mipmap/account"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Nom. Ex:  Diallo"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/prenom"
+            android:drawableStart="@mipmap/account"
+            android:hint="Prenom"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingStart="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@mipmap/account"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Pseudo. Ex:  dia15"
+            android:inputType="text"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/privilege"
+            android:drawableStart="@mipmap/account"
+            android:hint="Privileges"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingEnd="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

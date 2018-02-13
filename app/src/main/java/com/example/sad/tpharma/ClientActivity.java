@@ -2,6 +2,7 @@ package com.example.sad.tpharma;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.example.sad.tpharma.adapter.ClientGridAdapter;
@@ -19,6 +20,8 @@ public class ClientActivity extends AppCompatActivity {
         GridView gridView = (GridView) findViewById(R.id.gridClient);
         ClientGridAdapter adapter = new ClientGridAdapter(this, R.layout.custum_grid_client, getData());
         gridView.setAdapter(adapter);
+
+
 
     }
 

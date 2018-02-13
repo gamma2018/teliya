@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp" android:weightSum="2">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/teliya"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="-35dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="30dp"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="30dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:orientation="horizontal"
+                android:weightSum="1"
+                >
+                <!--Première partie-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:text="TELYA PHARMA"
+                        android:textColor="#00897B"
+                        />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@mipmap/account"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Nom d'utilisateur"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/password"
+            android:drawableStart="@mipmap/lock"
+            android:hint="Mot de passe"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingStart="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            />
+
+        <Button
+            android:radius="11dp"
+            android:textColor="#FFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Connexion"
+            android:id="@+id/connexion"
+            android:background="@drawable/button_bg_rounded_corners"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Mot de passe oublié ?"
+            android:id="@+id/textView3"
+
+            android:layout_marginTop="25dp"
+            android:textColor="#FFF"
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

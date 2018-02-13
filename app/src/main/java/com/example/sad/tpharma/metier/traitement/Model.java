@@ -8,8 +8,9 @@ import com.example.sad.tpharma.metier.entite.User;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class model {
+public class Model {
 
     ConnexionDB con;
     ResultSet rs = null;
@@ -20,7 +21,8 @@ public class model {
     {
         con = new ConnexionDB();
         con.connexion();
-        sql = "{? = CALL \"public\".\"ps_login\" (?,?)}";
+        sql = "{CALL \"public\".\"ps_login\" (?,?)}";
+        int count = 0;
 
         try {
             cs = con.getCon().prepareCall(sql);
@@ -30,20 +32,20 @@ public class model {
 
             if (rs.next())
                 {
-                    return rs.getInt("log");
+                    count = rs.getInt("result");
                 }
 
         }catch (SQLException e)
         {
             e.getMessage();
         }
-        return 1;
+        return count;
     }
     public void addUser(User user)
     {
         con = new ConnexionDB();
         con.connexion();
-        sql ="{?= CALL \"public\".\"ps_add_user\"(?,?,?,?)}";
+        sql ="{ CALL \"public\".\"ps_add_user\"(?,?,?,?)}";
 
         try {
             cs = con.getCon().prepareCall(sql);
@@ -86,6 +88,29 @@ public class model {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<User> getAllUser()
+    {
+        ArrayList<User> user = new ArrayList<User>();
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_get_user\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+
+            if (rs.next())
+            {
+                do {
+                    user.add(new User(rs.getString("nom"), rs.getString("prenom"), rs.getString("username"), rs.getString("privilege")));
+                }while (rs.next());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
     public void addProduit(Produit produit)
     {

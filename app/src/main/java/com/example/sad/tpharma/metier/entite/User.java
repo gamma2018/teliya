@@ -8,12 +8,22 @@ public class User {
     private String password;
     private String privilege;
 
+    public User(String firstName, String lastName, String username, String privilege) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.privilege = privilege;
+    }
+
     public User(String firstName, String lastName, String username, String password, String privilege) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.privilege = privilege;
+    }
+
+    public User() {
     }
 
     public String getFirstName() {
