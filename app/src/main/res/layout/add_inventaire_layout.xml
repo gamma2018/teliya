@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp" android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/nomProduit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Nom du produit"
+            android:inputType="textEmailAddress"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/typeProduit"
+            android:hint="Type du produit"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingStart="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/prixUnitaireProduit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Prix unitaire du produit"
+            android:inputType="number"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/quantiteInitialProduit"
+            android:hint="Quantité initial du produit."
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingEnd="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/codeProduit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Code du produit"
+            android:inputType="text"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+
+        <DatePicker
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePeremption"
+            android:layout_marginRight="20dp"
+
+            >
+
+        </DatePicker>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

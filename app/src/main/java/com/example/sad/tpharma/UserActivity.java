@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.sad.tpharma.adapter.ClientGridAdapter;
 import com.example.sad.tpharma.adapter.CustomAlertDialogBuilder;
@@ -26,16 +29,17 @@ import java.util.ArrayList;
 public class UserActivity extends AppCompatActivity {
 
     ArrayList<User> user;
+    EditText edNom, edPrenom, edUsername,edPrivilege;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
         final GridView gridView = (GridView) findViewById(R.id.gridUser);
+        registerForContextMenu(gridView);
         user = new ArrayList<User>(new Model().getAllUser());
         ClientGridAdapter adapter = new ClientGridAdapter(this, R.layout.custum_grid_client, getData(user));
         gridView.setAdapter(adapter);
-        registerForContextMenu(gridView);
 
         Button btnAddUser = (Button) findViewById(R.id.addUser);
 
@@ -47,10 +51,18 @@ public class UserActivity extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(UserActivity.this);
                 View addUserLayout = inflater.inflate(R.layout.add_user_layout, null);
 
-                final EditText edNom = (EditText) addUserLayout.findViewById(R.id.nom);
-                final EditText edPrenom = (EditText) addUserLayout.findViewById(R.id.prenom);
-                final EditText edUsername = (EditText) addUserLayout.findViewById(R.id.username);
-                final EditText edPrivilege = (EditText) addUserLayout.findViewById(R.id.privilege);
+                 edNom = (EditText) addUserLayout.findViewById(R.id.nom);
+                 edNom.addTextChangedListener(new MyTextWatcher(edNom));
+
+                 edPrenom = (EditText) addUserLayout.findViewById(R.id.prenom);
+                 edPrenom.addTextChangedListener(new MyTextWatcher(edPrenom));
+
+                 edUsername = (EditText) addUserLayout.findViewById(R.id.username);
+                 edUsername.addTextChangedListener(new MyTextWatcher(edUsername));
+
+                 edPrivilege = (EditText) addUserLayout.findViewById(R.id.privilege);
+                 edPrivilege.addTextChangedListener(new MyTextWatcher(edPrivilege));
+
                 final ProgressDialog pD = new ProgressDialog(UserActivity.this, ProgressDialog.STYLE_SPINNER);
 
                 alertDialog.setTitle("Ajout d'un utilisateur");
@@ -59,9 +71,16 @@ public class UserActivity extends AppCompatActivity {
                 alertDialog.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        if (statutChamps())
+                        {
+                            erreurLabel();
+                            return;
+                        }
+
                         User user = new User(edNom.getText().toString(), edPrenom.getText().toString(), edUsername.getText().toString(),edPrivilege.getText().toString());
                         new AddUser(user, pD).execute((Void) null);
-
+                        gridView.setAdapter(new ClientGridAdapter(UserActivity.this, R.layout.custum_grid_client, getData(new Model().getAllUser())));
                         dialog.dismiss();
                     }
                 });
@@ -78,8 +97,6 @@ public class UserActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-
-
 
     }
 
@@ -106,20 +123,132 @@ public class UserActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        if (v.getId() == R.id.gridUser)
-        {
-            MenuInflater inflater = getMenuInflater();
-            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-            String name = user.get(info.position).getFirstName();
-            menu.setHeaderTitle(name);
-            inflater.inflate(R.menu.menu, menu);
-        }
+        menu.setHeaderTitle("Context Menu");
+        AdapterView.AdapterContextMenuInfo cmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        menu.add(1, cmi.position, 0, "Action 1");
+        menu.add(2, cmi.position, 0, "Action 2");
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
 
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        return super.onContextItemSelected(item);
+        GridView g = (GridView) findViewById(R.id.gridUser);
+        String s = (String) g.getItemAtPosition(item.getItemId());
+        switch (item.getGroupId()) {
+            case 1:
+                Toast.makeText(this, "Action 1, Item "+s, Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "Action 2, Item "+s, Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
+    }
+
+    private boolean valideNom()
+    {
+        if (edNom.getText().toString().trim().isEmpty())
+        {
+            edNom.setError("Veillez entrer le nom");
+            edNom.requestFocus();
+            return false;
+        }
+        else {edNom.setError(null);}
+        return true;
+    }
+    private boolean validePrenom()
+    {
+        if (edPrenom.getText().toString().trim().isEmpty())
+        {
+            edPrenom.setError("Veillez entrer le prenom");
+            edPrenom.requestFocus();
+            return false;
+        }
+        else {edPrenom.setError(null);}
+        return true;
+    }
+    private boolean valideUsername()
+    {
+        if (edUsername.getText().toString().trim().isEmpty())
+        {
+            edUsername.setError("Veillez entrer un nom d'utilisateur");
+            edUsername.requestFocus();
+            return false;
+        }
+        else {edUsername.setError(null);}
+        return true;
+    }
+    private boolean validePrivilege()
+    {
+        if (edPrivilege.getText().toString().trim().isEmpty())
+        {
+            edPrivilege.setError("Veillez entrer un privilege");
+            edPrivilege.requestFocus();
+            return false;
+        }
+        else {edPrivilege.setError(null);}
+        return true;
+    }
+    public Boolean  statutChamps() {
+        return edNom.length() == 0 || edPrenom.length() == 0 || edUsername.length() == 0 || edPrivilege.length() == 0;
+    }
+
+    private class MyTextWatcher implements TextWatcher
+    {
+
+        private View view;
+
+        public MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+            switch (view.getId())
+            {
+                case R.id.nom:
+                    valideNom();
+                    break;
+                case R.id.prenom:
+                    validePrenom();
+                    break;
+                case R.id.username:
+                    valideUsername();
+                    break;
+                case R.id.privilege:
+                    validePrivilege();
+                    break;
+            }
+        }
+    }
+    public void erreurLabel()
+    {
+        if (edNom.length() == 0) {
+            edNom.setError("Veuillez entrer le nom");
+            edNom.requestFocus();
+        }
+        if (edPrenom.length() == 0) {
+            edPrenom.setError("Veuillez entrer le prenom");
+            edPrenom.requestFocus();
+        }
+        if (edUsername.length() == 0) {
+            edUsername.setError("Veuillez entrer un nom d'utilisateur");
+            edUsername.requestFocus();
+        }
+        if (edPrivilege.length() == 0) {
+            edPrivilege.setError("Veuillez entrer un privilege");
+            edPrivilege.requestFocus();
+        }
     }
 }

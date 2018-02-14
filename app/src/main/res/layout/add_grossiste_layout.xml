@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp" android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_marginTop="15dp"
+        >
+        <EditText
+            android:id="@+id/nomGrossiste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@mipmap/account"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Nom du grossiste"
+            android:inputType="text"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/telephoneGrossiste"
+            android:drawableStart="@drawable/ic_phone_iphone_black_24dp"
+            android:hint="Telephone du grossiste."
+            android:layout_marginTop="10dp"
+            android:textColor="#FFF"
+            android:paddingEnd="0dp"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFFFFF"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            />
+
+        <EditText
+            android:id="@+id/adresseGrossiste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Adresse du grossiste"
+            android:inputType="text"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
+
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

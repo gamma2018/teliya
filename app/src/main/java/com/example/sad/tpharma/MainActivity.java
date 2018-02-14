@@ -4,7 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.example.sad.tpharma.metier.Partager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         crdFournisseur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FournisseurActivity.class);
+                Intent intent = new Intent(MainActivity.this, GrossisteActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,4 +134,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menu.add(Partager.getUsername()).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menuInflater.inflate(R.menu.main_menu_items, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId())
+        {
+            case R.id.itemDeconnecter:
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.itemChangePassword:
+
+                Intent intent1 = new Intent(MainActivity.this, ChangePasswordActivity.class);
+                startActivity(intent1);
+                finish();
+                Toast.makeText(this, "Change pass", Toast.LENGTH_SHORT).show();
+                break;
+                default:
+                    return true;
+        }
+        return true;
+    }
 }

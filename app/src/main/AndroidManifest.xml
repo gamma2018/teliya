@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sad.tpharma">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"> </activity>
         <activity android:name=".VenteActivity" />
         <activity
             android:name=".Historique"
@@ -54,16 +52,21 @@
         <activity
             android:name=".UserActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".FournisseurActivity" />
+        <activity android:name=".GrossisteActivity" android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ReimpressionTicketActivity"
             android:windowSoftInputMode="stateHidden"> </activity>
-        <activity android:name=".LoginActivity" android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ChangePasswordActivity" android:windowSoftInputMode="stateHidden">
+
         </activity>
     </application>
 

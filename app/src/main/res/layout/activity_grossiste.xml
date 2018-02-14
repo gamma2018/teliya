@@ -7,7 +7,7 @@
     android:background="@color/backgroundcolor"
     android:gravity="center"
     android:padding="60dp"
-    tools:context=".FournisseurActivity">
+    tools:context=".GrossisteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
                 android:layout_weight="1"
                 >
                 <Button
+                    android:id="@+id/ajoutGrossiste"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/creer"
