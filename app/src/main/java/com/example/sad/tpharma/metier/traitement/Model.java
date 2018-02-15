@@ -36,6 +36,7 @@ public class Model {
                     count = rs.getInt("result");
                     if (count>0)
                         Partager.setUsername(username);
+                        Partager.setPassword(password);
                 }
 
         }catch (SQLException e)
