@@ -2,11 +2,15 @@ package com.example.sad.tpharma;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 import com.example.sad.tpharma.adapter.CustomAlertDialogBuilder;
 import com.example.sad.tpharma.adapter.FournisseurGridAdapter;
 import com.example.sad.tpharma.entite.HomeItem;
+import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.asynck.AddGrossiste;
 import com.example.sad.tpharma.metier.entite.Grossiste;
 import com.example.sad.tpharma.metier.traitement.Model;
@@ -196,5 +201,42 @@ public class GrossisteActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menu.add(Partager.getUsername()).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menuInflater.inflate(R.menu.main_menu_items, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId())
+        {
+            case R.id.itemDeconnecter:
+
+                Intent intent = new Intent(GrossisteActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.itemChangePassword:
+
+                Intent intent1 = new Intent(GrossisteActivity.this, ChangePasswordActivity.class);
+                startActivity(intent1);
+                finish();
+                Toast.makeText(this, "Change pass", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return true;
+        }
+        return true;
     }
 }

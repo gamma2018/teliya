@@ -14,46 +14,60 @@
         <activity android:name=".MainActivity"> </activity>
         <activity android:name=".VenteActivity" />
         <activity
+                android:label="Historique"
             android:name=".Historique"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Commande"
             android:name=".CommandeActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Nouvelle Commande"
             android:name=".commande.NouvelleCommandeActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Historique Commande"
             android:name=".commande.HistoriqueCommandeActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Facture"
             android:name=".FactureActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Note de frais"
             android:name=".facture.NoteFraisActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Facture Client"
             android:name=".facture.FactureClientActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Facture Fournisseur"
             android:name=".facture.FactureFournisseurActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Inventaire"
             android:name=".InventaireActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Retour Produit"
             android:name=".RetourProduitActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Note frais"
             android:name=".NoteFraisActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Client"
             android:name=".ClientActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UserActivity"
+            android:label="Utilisateur"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".GrossisteActivity" android:windowSoftInputMode="stateHidden" />
         <activity
+                android:label="Reimpression de ticket"
             android:name=".ReimpressionTicketActivity"
             android:windowSoftInputMode="stateHidden"> </activity>
         <activity

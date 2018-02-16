@@ -2,12 +2,14 @@ package com.example.sad.tpharma;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,8 +22,10 @@ import android.widget.Toast;
 import com.example.sad.tpharma.adapter.ClientGridAdapter;
 import com.example.sad.tpharma.adapter.CustomAlertDialogBuilder;
 import com.example.sad.tpharma.entite.HomeItem;
+import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.asynck.AddUser;
 import com.example.sad.tpharma.metier.entite.User;
+import com.example.sad.tpharma.metier.entite.Utilisateur;
 import com.example.sad.tpharma.metier.traitement.Model;
 
 import java.util.ArrayList;
@@ -29,7 +33,7 @@ import java.util.ArrayList;
 public class UserActivity extends AppCompatActivity {
 
     ArrayList<User> user;
-    EditText edNom, edPrenom, edUsername,edPrivilege;
+    EditText edNom, edPrenom, edUsername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +64,8 @@ public class UserActivity extends AppCompatActivity {
                  edUsername = (EditText) addUserLayout.findViewById(R.id.username);
                  edUsername.addTextChangedListener(new MyTextWatcher(edUsername));
 
-                 edPrivilege = (EditText) addUserLayout.findViewById(R.id.privilege);
-                 edPrivilege.addTextChangedListener(new MyTextWatcher(edPrivilege));
+                /* edPrivilege = (EditText) addUserLayout.findViewById(R.id.privilege);
+                 edPrivilege.addTextChangedListener(new MyTextWatcher(edPrivilege));*/
 
                 final ProgressDialog pD = new ProgressDialog(UserActivity.this, ProgressDialog.STYLE_SPINNER);
 
@@ -78,7 +82,7 @@ public class UserActivity extends AppCompatActivity {
                             return;
                         }
 
-                        User user = new User(edNom.getText().toString(), edPrenom.getText().toString(), edUsername.getText().toString(),edPrivilege.getText().toString());
+                        Utilisateur user = new Utilisateur(edNom.getText().toString(), edPrenom.getText().toString(), edUsername.getText().toString(),"");
                         new AddUser(user, pD).execute((Void) null);
                         gridView.setAdapter(new ClientGridAdapter(UserActivity.this, R.layout.custum_grid_client, getData(new Model().getAllUser())));
                         dialog.dismiss();
@@ -178,7 +182,7 @@ public class UserActivity extends AppCompatActivity {
         else {edUsername.setError(null);}
         return true;
     }
-    private boolean validePrivilege()
+   /* private boolean validePrivilege()
     {
         if (edPrivilege.getText().toString().trim().isEmpty())
         {
@@ -188,9 +192,9 @@ public class UserActivity extends AppCompatActivity {
         }
         else {edPrivilege.setError(null);}
         return true;
-    }
+    }*/
     public Boolean  statutChamps() {
-        return edNom.length() == 0 || edPrenom.length() == 0 || edUsername.length() == 0 || edPrivilege.length() == 0;
+        return edNom.length() == 0 || edPrenom.length() == 0 || edUsername.length() == 0;
     }
 
     private class MyTextWatcher implements TextWatcher
@@ -226,9 +230,6 @@ public class UserActivity extends AppCompatActivity {
                 case R.id.username:
                     valideUsername();
                     break;
-                case R.id.privilege:
-                    validePrivilege();
-                    break;
             }
         }
     }
@@ -246,9 +247,47 @@ public class UserActivity extends AppCompatActivity {
             edUsername.setError("Veuillez entrer un nom d'utilisateur");
             edUsername.requestFocus();
         }
-        if (edPrivilege.length() == 0) {
+        /*if (edPrivilege.length() == 0) {
             edPrivilege.setError("Veuillez entrer un privilege");
             edPrivilege.requestFocus();
-        }
+        }*/
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater = getMenuInflater();
+        menu.add(Partager.getUsername()).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menuInflater.inflate(R.menu.main_menu_items, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId())
+        {
+            case R.id.itemDeconnecter:
+
+                Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Deconnexion", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.itemChangePassword:
+
+                Intent intent1 = new Intent(UserActivity.this, ChangePasswordActivity.class);
+                startActivity(intent1);
+                finish();
+                Toast.makeText(this, "Change pass", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                return true;
+        }
+        return true;
+    }
+
 }

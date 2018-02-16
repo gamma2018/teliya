@@ -21,8 +21,6 @@ public class ClientActivity extends AppCompatActivity {
         ClientGridAdapter adapter = new ClientGridAdapter(this, R.layout.custum_grid_client, getData());
         gridView.setAdapter(adapter);
 
-
-
     }
 
     private ArrayList<HomeItem> getData()

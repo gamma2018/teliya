@@ -26,8 +26,8 @@ public class ConnexionDB {
 
             String driver = "org.postgresql.Driver";
             Class.forName(driver).newInstance();
-            String conString = "jdbc:postgresql://10.10.10.24:5432/TestLogin";
-            setCon(DriverManager.getConnection(conString, "postgres", "123456"));
+            String conString = "jdbc:postgresql://10.10.10.24:5432/TelyaDB";
+            setCon(DriverManager.getConnection(conString, "Telya", "123456789"));
             return true;
 
         }catch (Exception e)

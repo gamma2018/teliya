@@ -22,7 +22,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         final EditText edNewPassword = (EditText) findViewById(R.id.newPassword);
         final EditText edConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
         Button btnUpdatePass = (Button) findViewById(R.id.updatePassword);
-        final ProgressDialog pD = new ProgressDialog(ChangePasswordActivity.this, ProgressDialog.STYLE_HORIZONTAL);
+        final ProgressDialog pD = new ProgressDialog(ChangePasswordActivity.this, ProgressDialog.STYLE_SPINNER);
 
         btnUpdatePass.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,15 +4,16 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import com.example.sad.tpharma.metier.entite.User;
+import com.example.sad.tpharma.metier.entite.Utilisateur;
 import com.example.sad.tpharma.metier.traitement.Model;
 
 
 public class AddUser extends AsyncTask<Void, Void, Boolean> {
 
-    private User user;
+    private Utilisateur user;
     private ProgressDialog pD;
 
-    public AddUser(User user, ProgressDialog pD) {
+    public AddUser(Utilisateur user, ProgressDialog pD) {
         this.user = user;
         this.pD = pD;
     }

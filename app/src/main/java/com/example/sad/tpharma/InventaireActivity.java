@@ -71,14 +71,15 @@ public class InventaireActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Produit produit = new Produit(
+                       /* Produit produit = new Produit(
                                 edNom.getText().toString(),
                                 Integer.parseInt(edPrixUnitaire.getText().toString()),
                                 Integer.parseInt(edQuantite.getText().toString()),
                                 String.valueOf(edPeremption.getYear())+"-"+String.valueOf(edPeremption.getMonth()+1)+"-"+String.valueOf(edPeremption.getDayOfMonth()),
                                 edType.getText().toString(),
                                 edCodeProduit.getText().toString()
-                        );
+                        );*/
+                       Produit produit = new Produit(edType.getText().toString(), edNom.getText().toString(),"Forme", edCodeProduit.getText().toString(), String.valueOf(edPeremption.getYear())+"-"+String.valueOf(edPeremption.getMonth()+1)+"-"+String.valueOf(edPeremption.getDayOfMonth()), Integer.parseInt(edQuantite.getText().toString()), Integer.parseInt(edPrixUnitaire.getText().toString()));
                         new AddProduit(produit, pD, InventaireActivity.this).execute((Void) null);
 
                         gridView.setAdapter(new HistoriqueGridAdapter(InventaireActivity.this, R.layout.custum_grid_inventaire, getData(new Model().getAllProduit())));
@@ -111,10 +112,10 @@ public class InventaireActivity extends AppCompatActivity {
         for (int i =0; i<produits.size();i++)
         {
             item = new HistoriqueItem();
-            item.setLibelle(produits.get(i).getLibelle());
+            item.setLibelle(produits.get(i).getDesignation());
             item.setCodeProd(produits.get(i).getCode());
-            item.setMontant(produits.get(i).getPrixUnitaire());
-            item.setDate(produits.get(i).getPeremption());
+            item.setMontant(produits.get(i).getPu());
+            item.setDate(produits.get(i).getDatePremption());
             items.add(item);
         }
 
