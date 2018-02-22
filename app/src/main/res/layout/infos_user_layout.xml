@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="70dp"
+        android:background="#d6d4d4"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:weightSum="2"
+            android:padding="20dp"
+            android:layout_marginBottom="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom : "
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:textColor="@color/primaryDark"
+                />
+
+            <TextView
+                android:id="@+id/valeurNomUtilisateur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom utilisateur."
+                android:padding="15dp"
+                android:layout_weight="1"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:weightSum="2"
+            android:padding="20dp"
+            android:layout_marginBottom="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prénom : "
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:textColor="@color/primaryDark"
+                />
+
+            <TextView
+                android:id="@+id/valeurPrenomUtilisateur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prenom utilisateur."
+                android:padding="15dp"
+                android:layout_weight="1"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:weightSum="2"
+            android:padding="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username : "
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:textColor="@color/primaryDark"
+                />
+
+            <TextView
+                android:id="@+id/valeurUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username."
+                android:padding="15dp"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

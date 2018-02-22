@@ -1,22 +1,21 @@
 package com.example.sad.tpharma.metier.asynck;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.example.sad.tpharma.metier.entite.User;
+import com.example.sad.tpharma.metier.entite.Grossiste;
 import com.example.sad.tpharma.metier.traitement.Model;
 
 
-public class UpdateUser extends AsyncTask<Void, Void, Boolean> {
+public class UpdateGrossiste extends AsyncTask<Void, Void, Boolean> {
 
-    private String username;
-    private User user;
+    private int grossisteid;
+    private Grossiste mGrossiste;
     private ProgressDialog pD;
 
-    public UpdateUser(String username, User user, ProgressDialog pD) {
-        this.username = username;
-        this.user = user;
+    public UpdateGrossiste(int id, Grossiste grossiste, ProgressDialog pD) {
+        this.grossisteid = id;
+        this.mGrossiste = grossiste;
         this.pD = pD;
     }
 
@@ -46,7 +45,7 @@ public class UpdateUser extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Void... voids) {
 
-        new Model().updateUser(username, user);
+        new Model().updateGrossiste(grossisteid, mGrossiste);
         return true;
     }
 }

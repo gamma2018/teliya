@@ -23,6 +23,12 @@ public class User {
         this.privilege = privilege;
     }
 
+    public User(String firstName, String lastName, String username) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+    }
+
     public User() {
     }
 

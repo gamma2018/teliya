@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/backgroundcolor"
-                android:padding="40dp">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,11 +33,11 @@
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurNomGrossiste"
+            <EditText
+                android:id="@+id/editValeurNomClient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom du grossiste."
+                android:text="Nom du client.."
                 android:padding="15dp"
                 android:layout_weight="1"
 
@@ -56,20 +56,47 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adresse : "
+                android:text="Prénom : "
                 android:padding="15dp"
                 android:layout_weight="1"
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurAdresseGrossiste"
+            <EditText
+                android:id="@+id/editValeurPrenomClient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prenom utilisateur."
+                android:text="Prenom du client."
                 android:padding="15dp"
                 android:layout_weight="1"
+                />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:weightSum="2"
+            android:padding="20dp"
+            android:layout_marginBottom="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telephone : "
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:textColor="@color/primaryDark"
+                />
+
+            <EditText
+                android:id="@+id/editTelephoneClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telephone du client."
+                android:padding="15dp"
+                android:layout_weight="1"
                 />
         </LinearLayout>
 
@@ -84,17 +111,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Telephone : "
+                android:text="Mutuelle : "
                 android:padding="15dp"
                 android:layout_weight="1"
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurTelephoneGrossiste"
+            <EditText
+                android:id="@+id/editMutuelleClient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username."
+                android:text="Mutuelle du client."
                 android:padding="15dp"
                 android:layout_weight="1"
                 />

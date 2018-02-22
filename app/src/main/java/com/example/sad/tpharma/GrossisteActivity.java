@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class GrossisteActivity extends AppCompatActivity {
     private Button addGrossiste;
-    EditText edNom, edTelephone,edAddresse;
+    EditText edNom, edTelephone,edAddresse, edRecherche;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,9 @@ public class GrossisteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grossiste);
 
 
+        edRecherche = (EditText) findViewById(R.id.rechercheGrossiste);
         final  GridView gridView = (GridView) findViewById(R.id.gridFournisseur);
-        FournisseurGridAdapter adapter = new FournisseurGridAdapter(this, R.layout.custum_grid_fournisseur, getData(new Model().getAllGrossiste()));
+        final FournisseurGridAdapter adapter = new FournisseurGridAdapter(this, R.layout.custum_grid_fournisseur, getData(new Model().getAllGrossiste()));
         gridView.setAdapter(adapter);
 
 
@@ -90,11 +91,30 @@ public class GrossisteActivity extends AppCompatActivity {
                     }
                 });
                 alertDialog.setCanceledOnTouchOutside(false);
-
+                alertDialog.setCanceledOnTouchOutside(false);
                 alertDialog.show();
             }
         });
 
+        //RECHERCHE GROSSISTE
+
+        edRecherche.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -109,6 +129,7 @@ public class GrossisteActivity extends AppCompatActivity {
             item.setImage(R.drawable.user);
             item.setLibelle(pList.get(i).getLibelle());
             item.setDescription(pList.get(i).getTelephone()+"\n"+pList.get(i).getAdresse());
+            item.setIdGrossiste(pList.get(i).getCode());
             items.add(item);
         }
 

@@ -11,13 +11,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import com.example.sad.tpharma.adapter.CustomAlertDialogBuilder;
 import com.example.sad.tpharma.adapter.HistoriqueGridAdapter;
 import com.example.sad.tpharma.entite.HistoriqueItem;
-import com.example.sad.tpharma.metier.Partager;
+import com.example.sad.tpharma.metier.asynck.AddFamille;
 import com.example.sad.tpharma.metier.asynck.AddProduit;
+import com.example.sad.tpharma.metier.entite.FamilleProduit;
 import com.example.sad.tpharma.metier.entite.Produit;
 import com.example.sad.tpharma.metier.traitement.Model;
 
@@ -27,6 +27,8 @@ public class InventaireActivity extends AppCompatActivity {
 
     private Button ajoutProduit;
     SwipeRefreshLayout refresh;
+    private Button ajoutFamille;
+    private  EditText editFamilleProduit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class InventaireActivity extends AppCompatActivity {
         setContentView(R.layout.activity_inventaire);
         refresh = (SwipeRefreshLayout) findViewById(R.id.refresh);
 
-       final GridView gridView = (GridView) findViewById(R.id.gridInventaire);
+         final GridView gridView = (GridView) findViewById(R.id.gridInventaire);
         HistoriqueGridAdapter adapter = new HistoriqueGridAdapter(InventaireActivity.this, R.layout.custum_grid_inventaire, getData(new Model().getAllProduit()));
         gridView.setAdapter(adapter);
 
@@ -101,6 +103,52 @@ public class InventaireActivity extends AppCompatActivity {
             }
         });
 
+
+        editFamilleProduit = (EditText) findViewById(R.id.familleProduit);
+        ajoutFamille = (Button) findViewById(R.id.ajoutFamilleProduit);
+        //Ajout d'une famille de produit.
+        ajoutFamille.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            final CustomAlertDialogBuilder alertDialog = new CustomAlertDialogBuilder(InventaireActivity.this);
+                LayoutInflater inflater = LayoutInflater.from(InventaireActivity.this);
+                View addFamilleLayout = inflater.inflate(R.layout.add_famille_layout, null);
+
+                final EditText nom = (EditText) addFamilleLayout.findViewById(R.id.familleProduit);
+
+                final ProgressDialog pD = new ProgressDialog(InventaireActivity.this, ProgressDialog.STYLE_SPINNER);
+
+                alertDialog.setTitle("Ajout d'une fammille de produit.");
+                alertDialog.setView(addFamilleLayout);
+
+                alertDialog.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                      FamilleProduit familleProduit = new FamilleProduit(nom.getText().toString());
+                        new AddFamille(familleProduit, pD, InventaireActivity.this).execute((Void) null);
+
+                        gridView.setAdapter(new HistoriqueGridAdapter(InventaireActivity.this, R.layout.custum_grid_inventaire, getData(new Model().getAllProduit())));
+                        dialog.dismiss();
+
+                    }
+                });
+
+                alertDialog.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                });
+                alertDialog.setCanceledOnTouchOutside(false);
+
+                alertDialog.show();
+            }
+        });
+
+
     }
 
     private ArrayList<HistoriqueItem> getData(ArrayList<Produit> produits)
@@ -121,5 +169,6 @@ public class InventaireActivity extends AppCompatActivity {
 
         return items;
     }
+
 
 }

@@ -51,6 +51,7 @@
                     android:background="#fff"
                     android:hint="@string/rechercherFournisseur"
                     android:padding="20dp"
+                    android:id="@+id/rechercheGrossiste"
                     android:drawableStart="@drawable/ic_search_black_24dp"
                     />
 

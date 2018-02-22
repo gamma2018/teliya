@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/backgroundcolor"
-                android:padding="40dp">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:padding="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,11 +33,11 @@
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurNomGrossiste"
+            <EditText
+                android:id="@+id/editValeurNomGrossiste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom du grossiste."
+                android:text="Nom grossiste."
                 android:padding="15dp"
                 android:layout_weight="1"
 
@@ -62,11 +62,11 @@
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurAdresseGrossiste"
+            <EditText
+                android:id="@+id/editValeurAddresseGrossiste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Prenom utilisateur."
+                android:text="Adresse  du grossiste"
                 android:padding="15dp"
                 android:layout_weight="1"
 
@@ -84,17 +84,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Telephone : "
+                android:text="Telephone Grossiste : "
                 android:padding="15dp"
                 android:layout_weight="1"
                 android:textColor="@color/primaryDark"
                 />
 
-            <TextView
-                android:id="@+id/valeurTelephoneGrossiste"
+            <EditText
+                android:id="@+id/editValeurTelephoneGrossiste"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username."
+                android:text="Telephone du grossiste"
                 android:padding="15dp"
                 android:layout_weight="1"
                 />

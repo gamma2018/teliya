@@ -2,10 +2,33 @@ package com.example.sad.tpharma.metier.entite;
 
 public class Client
 {
+
+
+    private int idClient;
     private String nomMutuelle;
     private String nomClient;
     private String prenomClient;
     private String telClient;
+
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
+    }
+
+    public Client(){
+
+    }
+
+    public Client(int idClient, String nomMutuelle, String nomClient, String prenomClient, String telClient) {
+        this.idClient = idClient;
+        this.nomMutuelle = nomMutuelle;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
+        this.telClient = telClient;
+    }
 
     public Client(String nomMutuelle, String nomClient, String prenomClient, String telClient) {
         this.nomMutuelle = nomMutuelle;

@@ -7,45 +7,48 @@
     android:background="@color/backgroundcolor"
     android:padding="40dp" android:weightSum="2">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:layout_marginTop="15dp"
         >
+
         <EditText
             android:id="@+id/nomProduit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="5dp"
+            android:layout_weight="1"
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="Nom du produit"
             android:inputType="textEmailAddress"
+
             android:paddingStart="0dp"
             android:textColor="#FFF"
             android:textColorHint="#FFFFFF"
-
-            android:layout_marginBottom="25dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="5dp"
             />
 
         <EditText
+            android:id="@+id/typeProduit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:ems="10"
-            android:id="@+id/typeProduit"
-            android:hint="Type du produit"
-            android:layout_marginTop="10dp"
-            android:textColor="#FFF"
-            android:paddingStart="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#FFFFFF"
             android:layout_marginBottom="25dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Type du produit"
+            android:inputType="text"
+            android:paddingStart="0dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFFFFF"
             />
     </LinearLayout>
 

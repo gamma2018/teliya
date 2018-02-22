@@ -6,14 +6,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.example.sad.tpharma.R;
 import com.example.sad.tpharma.entite.HomeItem;
 import com.example.sad.tpharma.metier.asynck.UpdateClient;
@@ -23,24 +16,19 @@ import com.example.sad.tpharma.metier.traitement.Model;
 import java.util.ArrayList;
 
 
-public class ClientGridAdapter extends BaseAdapter implements Filterable{
+public class ClientGridAdapter_ extends BaseAdapter{
 
     Context c;
     int layout;
     ArrayList<HomeItem> items;
-
-    ArrayList<HomeItem> filterList;
-    ClientCustomFilter filter;
-
     ProgressDialog pD;
     EditText editNomClient, editPrenomClient, editTelephoneClient, editNomMutuelle;
     Client client;
 
-    public ClientGridAdapter(Context c, int layout, ArrayList<HomeItem> items) {
+    public ClientGridAdapter_(Context c, int layout, ArrayList<HomeItem> items) {
         this.c = c;
         this.layout = layout;
         this.items = items;
-        this.filterList = items;
     }
 
     @Override
@@ -59,28 +47,30 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        View gridV;
 
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
 
-            convertView = inflater.inflate(layout, null);
-        }
+            gridV = new View(c);
+            gridV = inflater.inflate(layout, null);
 
-            ImageView imageV = (ImageView) convertView.findViewById(R.id.photoClient);
-            TextView libelleV = (TextView) convertView.findViewById(R.id.nomClient);
-            TextView nameV = (TextView) convertView.findViewById(R.id.prenomClient);
-            TextView mutuelle = (TextView) convertView.findViewById(R.id.mutuelle);
-
+            final HomeItem item = (HomeItem) getItem(position);
+            ImageView imageV = (ImageView) gridV.findViewById(R.id.photoClient);
+            TextView libelleV = (TextView) gridV.findViewById(R.id.nomClient);
+            TextView nameV = (TextView) gridV.findViewById(R.id.prenomClient);
+            TextView mutuelle = (TextView) gridV.findViewById(R.id.mutuelle);
 
             //Chargement
-            imageV.setImageResource(items.get(position).getImage());
-            libelleV.setText(items.get(position).getNomClient());
-            nameV.setText(items.get(position).getTelephoneClient());
-            mutuelle.setText(items.get(position).getNomClientMutuelle());
+            imageV.setImageResource(item.getImage());
+            libelleV.setText(item.getNomClient());
+            nameV.setText(item.getTelephoneClient());
+            mutuelle.setText(item.getNomClientMutuelle());
 
-            convertView.setOnClickListener(new View.OnClickListener() {
+            gridV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     final CustomAlertDialogBuilder alertDialog = new CustomAlertDialogBuilder(c);
@@ -93,7 +83,7 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
                     TextView mutuelle = (TextView) infosGrossisteLayout.findViewById(R.id.valeurMutuelleClient);
 
                     client = new Client();
-                    client = new Model().getClientByID(items.get(position).getIdclient());
+                    client = new Model().getClientByID(item.getIdclient());
 
                     nom.setText(client.getNomClient());
                     prenom.setText(client.getPrenomClient());
@@ -102,7 +92,7 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
 
 
 
-                    alertDialog.setTitle(items.get(position).getNomClient()+" "+items.get(position).getPrenomClient());
+                    alertDialog.setTitle(item.getLibelle());
                     alertDialog.setView(infosGrossisteLayout);
                     alertDialog.setPositiveButton("Editer", new DialogInterface.OnClickListener() {
                         @Override
@@ -127,7 +117,7 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
 
                             dlg.setTitle(client.getNomClient());
                             dlg.setView(updateClientLayout);
-                            dlg.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                         dlg.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
@@ -146,7 +136,7 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
                                 }
                             });
 
-                            dlg.setNegativeButton("Annuler", null);
+                          dlg.setNegativeButton("Annuler", null);
                             dlg.setCanceledOnTouchOutside(false);
                             dlg.show();
                         }
@@ -157,60 +147,10 @@ public class ClientGridAdapter extends BaseAdapter implements Filterable{
                 }
             });
 
-        return convertView;
-    }
-
-    @Override
-    public Filter getFilter() {
-        if (filter == null)
-        {
-            filter = new ClientCustomFilter();
-        }
-        return filter;
-    }
-
-    private class ClientCustomFilter extends Filter
-    {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-
-            FilterResults results = new FilterResults();
-            if (constraint != null && constraint.length() > 0)
-            {
-                constraint = constraint.toString().toUpperCase();
-                ArrayList<HomeItem> filters = new ArrayList<HomeItem>();
-                for (int i=0; i<filterList.size(); i++)
-                {
-                    if (filterList.get(i).getNomClient().toUpperCase().contains(constraint))
-                    {
-                        HomeItem item = new HomeItem(
-                                filterList.get(i).getImage(),
-                                filterList.get(i).getIdclient(),
-                                filterList.get(i).getNomClient(),
-                                filterList.get(i).getPrenomClient(),
-                                filterList.get(i).getTelephoneClient(),
-                                filterList.get(i).getNomClientMutuelle());
-                        filters.add(item);
-                    }
-                }
-                results.count = filters.size();
-                results.values = filters;
-            }
-            else
-            {
-                results.count = filterList.size();
-                results.values = filterList;
-            }
-
-            return results;
+        } else {
+            gridV = (View) convertView;
         }
 
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-
-            items = (ArrayList<HomeItem>) results.values;
-            notifyDataSetChanged();
-        }
+        return gridV;
     }
 }

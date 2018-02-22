@@ -60,7 +60,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="right"
                 android:layout_marginLeft="30dp"
                 >
@@ -72,6 +72,21 @@
                     android:layout_gravity="end"
                     android:drawableRight="@drawable/ic_add_black_24dp"
                     android:text="Ajout"
+
+                    />
+
+                <Button
+                    android:background="@color/colorAccent"
+                    android:id="@+id/ajoutFamilleProduit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Ajout Famille"
+                    android:drawableRight="@drawable/ic_add_black_24dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFF"
+                    android:textColorHint="#FFFFFF"
+                    android:layout_marginLeft="30dp"
                     />
             </LinearLayout>
         </LinearLayout>

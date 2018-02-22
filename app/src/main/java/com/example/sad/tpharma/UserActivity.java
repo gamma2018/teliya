@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.sad.tpharma.adapter.ClientGridAdapter;
 import com.example.sad.tpharma.adapter.CustomAlertDialogBuilder;
+import com.example.sad.tpharma.adapter.UserGridAdapter;
 import com.example.sad.tpharma.entite.HomeItem;
 import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.asynck.AddUser;
@@ -34,18 +36,52 @@ public class UserActivity extends AppCompatActivity {
 
     ArrayList<User> user;
     EditText edNom, edPrenom, edUsername;
+    EditText sv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
         final GridView gridView = (GridView) findViewById(R.id.gridUser);
+        sv = (EditText) findViewById(R.id.rechercheUser);
         registerForContextMenu(gridView);
         user = new ArrayList<User>(new Model().getAllUser());
-        ClientGridAdapter adapter = new ClientGridAdapter(this, R.layout.custum_grid_client, getData(user));
+        final UserGridAdapter adapter = new UserGridAdapter(this, R.layout.custum_grid_client, getData(user));
         gridView.setAdapter(adapter);
 
         Button btnAddUser = (Button) findViewById(R.id.addUser);
+
+        //recherche
+        sv.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+
+                adapter.getFilter().filter(text);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+       /* sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });*/
 
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +120,7 @@ public class UserActivity extends AppCompatActivity {
 
                         Utilisateur user = new Utilisateur(edNom.getText().toString(), edPrenom.getText().toString(), edUsername.getText().toString(),"");
                         new AddUser(user, pD).execute((Void) null);
-                        gridView.setAdapter(new ClientGridAdapter(UserActivity.this, R.layout.custum_grid_client, getData(new Model().getAllUser())));
+                        gridView.setAdapter(new UserGridAdapter(UserActivity.this, R.layout.custum_grid_client, getData(new Model().getAllUser())));
                         dialog.dismiss();
                     }
                 });
@@ -116,39 +152,13 @@ public class UserActivity extends AppCompatActivity {
             item.setImage(R.drawable.client);
             item.setLibelle(user.get(i).getFirstName());
             item.setDescription(user.get(i).getLastName());
+            item.setUsername(user.get(i).getUsername());
             items.add(item);
         }
 
 
         return items;
     }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-
-        menu.setHeaderTitle("Context Menu");
-        AdapterView.AdapterContextMenuInfo cmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        menu.add(1, cmi.position, 0, "Action 1");
-        menu.add(2, cmi.position, 0, "Action 2");
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-
-        GridView g = (GridView) findViewById(R.id.gridUser);
-        String s = (String) g.getItemAtPosition(item.getItemId());
-        switch (item.getGroupId()) {
-            case 1:
-                Toast.makeText(this, "Action 1, Item "+s, Toast.LENGTH_SHORT).show();
-                break;
-            case 2:
-                Toast.makeText(this, "Action 2, Item "+s, Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return true;
-    }
-
     private boolean valideNom()
     {
         if (edNom.getText().toString().trim().isEmpty())

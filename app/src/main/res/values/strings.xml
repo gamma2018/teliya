@@ -65,5 +65,8 @@
     <string name="creer">"Créer"</string>
     <string name="deconnexion">"Deconnexion"</string>
     <string name="changerPassword">"Changer votre mot de passe"</string>
+    <string name="nom">"Nom : "</string>
+    <string name="prenom">"Prenom : "</string>
+    <string name="grossiste">"Grossiste : "</string>
 
 </resources>

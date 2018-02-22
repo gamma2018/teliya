@@ -7,7 +7,18 @@ public class Grossiste {
     private String adresse;
     private String telephone;
 
-    public Grossiste(String libelle, String adresse, String telephone) {
+
+    public Grossiste() {
+    }
+
+    public Grossiste(String libelle,  String telephone, String adresse) {
+        this.libelle = libelle;
+        this.telephone = telephone;
+        this.adresse = adresse;
+    }
+
+    public Grossiste(int code, String libelle,  String telephone, String adresse) {
+        this.code = code;
         this.libelle = libelle;
         this.adresse = adresse;
         this.telephone = telephone;
