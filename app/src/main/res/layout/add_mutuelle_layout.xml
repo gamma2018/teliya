@@ -31,15 +31,14 @@
 
             >
             <EditText
-
-                android:id="@+id/nomClientAjout"
+                android:id="@+id/nomMutuelle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:drawableStart="@mipmap/account"
                 android:drawablePadding="5dp"
 
-                android:hint="Nom du client"
+                android:hint="Nom du mutuelle"
                 android:inputType="text"
                 android:paddingStart="0dp"
 
@@ -48,14 +47,14 @@
                 />
 
             <EditText
-                android:id="@+id/prenomClientAjout"
+                android:id="@+id/telephoneMutuelle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawableStart="@mipmap/account"
                 android:drawablePadding="5dp"
 
-                android:hint="Prénom du client"
+                android:hint="N° Telephone du mutuelle"
                 android:inputType="text"
                 android:paddingStart="0dp"
 
@@ -64,14 +63,13 @@
                 />
 
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:met_floatingLabel="normal"
                 android:inputType="text"
-                android:id="@+id/nomMutuelleClient"
+                android:id="@+id/adresseMutuelle"
                 android:drawableStart="@drawable/ic_phone_iphone_black_24dp"
-                android:hint="Nom du mutuelle."
+                android:hint="Adresse du mutuelle."
                 android:layout_marginTop="10dp"
                 android:paddingEnd="0dp"
                 android:drawablePadding="5dp"
@@ -79,18 +77,16 @@
                 />
 
             <EditText
-                android:id="@+id/telClientAjout"
+                android:id="@+id/emailMutuelle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawableStart="@drawable/ic_location_on_black_24dp"
                 android:drawablePadding="5dp"
 
-                android:hint="telephone du client."
+                android:hint="Email du mutuelle"
                 android:inputType="text"
                 android:paddingStart="0dp"
-
-
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
                 />

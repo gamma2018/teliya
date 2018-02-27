@@ -2,31 +2,48 @@ package com.example.sad.tpharma.entite;
 
 public class InventaireItem {
 
-    String title;
-    String subTitle;
+    private String libelle, codeProd, date;
+    private int montant;
 
-    public InventaireItem(String title, String subTitle) {
-        this.title = title;
-        this.subTitle = subTitle;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public InventaireItem(String title) {
-        this.title = title;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCodeProd() {
+        return codeProd;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCodeProd(String codeProd) {
+        this.codeProd = codeProd;
     }
 
-    public String getSubTitle() {
-        return subTitle;
+    public String getDate() {
+        return date;
     }
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getMontant() {
+        return montant;
+    }
+
+    public void setMontant(int montant) {
+        this.montant = montant;
+    }
+
+    public InventaireItem(String libelle, String codeProd, String date, int montant) {
+        this.libelle = libelle;
+        this.codeProd = codeProd;
+        this.date = date;
+        this.montant = montant;
+    }
+
+    public InventaireItem() {
     }
 }

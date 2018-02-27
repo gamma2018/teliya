@@ -1,146 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/backgroundcolor"
-    android:padding="40dp" android:weightSum="2">
-
-
+    android:padding="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
+        android:layout_centerInParent="true"
+        android:background="#d6d4d4"
+        android:orientation="vertical"
+        android:padding="50dp"
+
         >
 
-        <EditText
-            android:id="@+id/nomProduit"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Nom du produit"
-            android:inputType="textEmailAddress"
+            android:background="#fff"
+            android:padding="2dp"
+            android:weightSum="2">
 
-            android:paddingStart="0dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFFFFF"
-            />
+            <EditText
+                android:id="@+id/editLibelleProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:padding="15dp"
+                android:hint="Produit" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/typeProduit"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Type du produit"
-            android:inputType="text"
-            android:paddingStart="0dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFFFFF"
-            />
-    </LinearLayout>
+            android:background="#fff"
+            android:padding="2dp"
+            android:weightSum="2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginTop="15dp"
-        >
-        <EditText
-            android:id="@+id/prixUnitaireProduit"
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/spTypeProduit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:hint="Type produit"
+                android:inputType="text"
+                android:paddingEnd="0dp"
+                app:met_floatingLabel="normal" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Prix unitaire du produit"
-            android:inputType="number"
-            android:paddingStart="0dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFFFFF"
-
-            android:layout_marginBottom="25dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp"
-            />
+            android:background="#fff"
+            android:padding="2dp"
+            android:weightSum="2">
 
-        <EditText
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:id="@+id/spFormeProduit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:hint="Forme produit"
+                android:inputType="text"
+                android:paddingEnd="0dp"
+                app:met_floatingLabel="normal" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/quantiteInitialProduit"
-            android:hint="Quantité initial du produit."
-            android:layout_marginTop="10dp"
-            android:textColor="#FFF"
-            android:paddingEnd="0dp"
-            android:drawablePadding="5dp"
-            android:textColorHint="#FFFFFF"
-            android:layout_marginBottom="25dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            />
-    </LinearLayout>
+            android:background="#fff"
+            android:padding="2dp"
+            android:weightSum="2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginTop="15dp"
-        >
-        <EditText
-            android:id="@+id/codeProduit"
+            <EditText
+                android:id="@+id/editCodeProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:padding="15dp"
+                android:hint="Code produit" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Code du produit"
-            android:inputType="text"
-            android:paddingStart="0dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFFFFF"
-            android:layout_marginBottom="25dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp"
-            />
+            android:background="#fff"
+            android:padding="2dp"
+            android:weightSum="2">
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginTop="15dp"
-        >
-
-        <DatePicker
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/datePeremption"
-            android:layout_marginRight="20dp"
-
-            >
-
-        </DatePicker>
-
+            <EditText
+                android:id="@+id/editSeuilProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:padding="15dp"
+                android:hint="Seuil" />
+        </LinearLayout>
 
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

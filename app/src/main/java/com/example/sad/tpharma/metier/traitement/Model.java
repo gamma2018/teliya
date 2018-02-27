@@ -292,16 +292,15 @@ public class Model {
     {
         con = new ConnexionDB();
         con.connexion();
-        sql ="{ CALL \"public\".\"ps_add_produit\"(?,?,?,?,?,?)}";
+        sql ="{ CALL \"public\".\"ps_add_produit\"(?,?,?,?,?)}";
 
         try {
             cs = con.getCon().prepareCall(sql);
-            cs.setString(1, produit.getDesignation());
-            cs.setInt(2, produit.getPu());
-            cs.setInt(3, produit.getQuantiteInitial());
-            cs.setString(4, produit.getDatePremption());
-            cs.setString(5, produit.getLibelleType());
-            cs.setString(6, produit.getCode());
+            cs.setString(1, produit.getLibelleProduit());
+            cs.setString(2, produit.getType());
+            cs.setString(3, produit.getNomForme());
+            cs.setString(4, produit.getCode());
+            cs.setInt(5, produit.getSuil());
             cs.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -316,9 +315,9 @@ public class Model {
         try {
             cs = con.getCon().prepareCall(sql);
             cs.setInt(1, Produitcode);
-            cs.setString(2, produit.getDesignation());
+           // cs.setString(2, produit.getDesignation());
             cs.setString(3, produit.getNomForme());
-            cs.setString(4, produit.getLibelleType());
+            //cs.setString(4, produit.getLibelleType());
             cs.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -338,8 +337,14 @@ public class Model {
             if (rs.next())
             {
                do {
-                   produit = new Produit(rs.getString("designation"), rs.getInt("pu"), rs.getInt("qd"), String.valueOf(rs.getDate("dateperemption")),rs.getString("code"));
-
+                   produit = new Produit( rs.getString("nomProduits"),
+                                          rs.getString("typeProduits"),
+                                          rs.getString("formeProduits"),
+                                          rs.getString("codeProduits"),
+                                          rs.getInt("seuilProduits"),
+                                          rs.getInt("puProduits"),
+                                          rs.getString("dateProduits")
+                                        );
                    listeProd.add(produit);
 
                }while (rs.next());
@@ -354,8 +359,6 @@ public class Model {
         }
         return listeProd;
     }
-
-
 
     //Famille de produit
     public void addFamille(FamilleProduit familleProduit)
@@ -420,7 +423,6 @@ public class Model {
         }
         return listeProd;
     }
-
 
     public User getUserByUsername(String userName)
     {
@@ -544,7 +546,7 @@ public class Model {
             rs = cs.executeQuery();
             if (rs.next()) {
                 do {
-                    listMutuelle.add(rs.getString("mutuelle"));
+                    listMutuelle.add(rs.getString("nommutuelle"));
                 } while (rs.next());
             }
             rs.close();
@@ -554,4 +556,108 @@ public class Model {
 
         return  listMutuelle;
     }
+
+    public ArrayList<Mutuelle> getAllMutuelles() {
+        ArrayList<Mutuelle> listMutuelle = new ArrayList<Mutuelle>();
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_getAllMutuelle\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listMutuelle.add(
+                            new Mutuelle(
+                                    rs.getInt("mutuelleid"),
+                                    rs.getString("nommutuelle"),
+                                    rs.getString("phonemutuelle"),
+                                    rs.getString("adressemutuelle"),
+                                    rs.getString("emailmutuelle")
+                            ));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return  listMutuelle;
+    }
+
+    public Mutuelle getMutuelleByName(String name)
+    {
+        Mutuelle mutuelle = new Mutuelle();
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_get_mutuelle_by_name\"(?)}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            cs.setString(1,  name);
+            rs = cs.executeQuery();
+
+            if (rs.next())
+            {
+
+                mutuelle = new Mutuelle(rs.getInt("mutuelleid"), rs.getString("nommutuelle"), rs.getString("phonemutuelle"), rs.getString("adressemutuelle"), rs.getString("emailmutuelle"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mutuelle;
+    }
+
+    public ArrayList<String> getAllTypeProduits() {
+        ArrayList<String> listTypeProduits = new ArrayList<String>();
+
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_gettypeproduits\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listTypeProduits.add(rs.getString("libelletype"));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listTypeProduits;
+    }
+
+    public ArrayList<String> getAllFormeProduits() {
+        ArrayList<String> listFormeProduits = new ArrayList<String>();
+
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_getformeproduits\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listFormeProduits.add(rs.getString("libelleforme"));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listFormeProduits;
+    }
+
 }

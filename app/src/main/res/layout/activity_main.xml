@@ -483,7 +483,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
-                android:id="@+id/loter"
+                android:id="@+id/mutuelles"
                 android:layout_width="180dp"
                 android:layout_height="200dp"
                 android:layout_margin="35dp"
@@ -499,14 +499,14 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/button_bg_rounded_corners"
-                        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                        android:src="@drawable/ic_account_balance_black_24dp"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="@string/lotterDelotter"/>
+                        android:text="Mutuelles"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"

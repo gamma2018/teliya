@@ -61,6 +61,7 @@
     <string name="sous_titre">Sous titre</string>
     <string name="retournezCommandeFournisseur">Retournez une commande fournisseur</string>
     <string name="rechercherClient">Rechercher client</string>
+    <string name="rechercherMutuelle">Rechercher mutuelle</string>
     <string name="rechercherFournisseur">Rechercher fournisseur</string>
     <string name="creer">"Créer"</string>
     <string name="deconnexion">"Deconnexion"</string>

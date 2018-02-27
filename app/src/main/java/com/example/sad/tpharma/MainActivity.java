@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         CardView crdNoteFrais = (CardView) findViewById(R.id.noteFrais);
         CardView crdClient = (CardView) findViewById(R.id.client);
         CardView crdFournisseur = (CardView) findViewById(R.id.fournisseur);
-        CardView crdLoter = (CardView) findViewById(R.id.loter);
+        CardView mutulle = (CardView) findViewById(R.id.mutuelles);
         CardView crdReimpression = (CardView) findViewById(R.id.reimpression);
         CardView crdUtilisateur = (CardView) findViewById(R.id.utilisateur);
         CardView crdLog = (CardView) findViewById(R.id.log);
@@ -128,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mutulle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MutuelleActivity.class);
                 startActivity(intent);
             }
         });

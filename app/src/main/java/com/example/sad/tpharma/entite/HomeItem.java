@@ -14,6 +14,9 @@ public class HomeItem {
     private String nomClientMutuelle;
     private String telephoneClient;
 
+    private String nomMutuelle, telephoneMutuelle, adresseMutuelle, emailMutuelle;
+    private int idMutuelle;
+
     public HomeItem(int image, String libelle, String description, String username) {
         this.image = image;
         this.libelle = libelle;
@@ -36,6 +39,14 @@ public class HomeItem {
         this.prenomClient = prenomClient;
         this.telephoneClient = telephoneClient;
         this.nomClientMutuelle = nomClientMutuelle;
+    }
+
+    public HomeItem(int image, String nomMutuelle, String telephoneMutuelle, String emailMutuelle, String adresseMutuelle) {
+        this.image = image;
+        this.nomMutuelle = nomMutuelle;
+        this.telephoneMutuelle = telephoneMutuelle;
+        this.emailMutuelle = emailMutuelle;
+        this.adresseMutuelle = adresseMutuelle;
     }
 
     public HomeItem() {
@@ -119,5 +130,45 @@ public class HomeItem {
 
     public void setTelephoneClient(String telephoneClient) {
         this.telephoneClient = telephoneClient;
+    }
+
+    public String getNomMutuelle() {
+        return nomMutuelle;
+    }
+
+    public void setNomMutuelle(String nomMutuelle) {
+        this.nomMutuelle = nomMutuelle;
+    }
+
+    public String getTelephoneMutuelle() {
+        return telephoneMutuelle;
+    }
+
+    public void setTelephoneMutuelle(String telephoneMutuelle) {
+        this.telephoneMutuelle = telephoneMutuelle;
+    }
+
+    public String getAdresseMutuelle() {
+        return adresseMutuelle;
+    }
+
+    public void setAdresseMutuelle(String adresseMutuelle) {
+        this.adresseMutuelle = adresseMutuelle;
+    }
+
+    public String getEmailMutuelle() {
+        return emailMutuelle;
+    }
+
+    public void setEmailMutuelle(String emailMutuelle) {
+        this.emailMutuelle = emailMutuelle;
+    }
+
+    public int getIdMutuelle() {
+        return idMutuelle;
+    }
+
+    public void setIdMutuelle(int idMutuelle) {
+        this.idMutuelle = idMutuelle;
     }
 }

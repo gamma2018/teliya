@@ -2,30 +2,39 @@ package com.example.sad.tpharma.metier.entite;
 
 public class Produit {
 
-    private String libelleType;
-    private String designation;
+    private String libelleProduit;
+    private String type;
     private String nomForme;
     private String code;
-    private String datePremption;
-    private int quantiteInitial;
+    private int suil;
     private int pu;
+    private String date;
 
-    public Produit(String libelleType, String designation, String nomForme, String code, String datePremption, int quantiteInitial, int pu) {
-        this.libelleType = libelleType;
-        this.designation = designation;
+
+    public Produit(String libelleProduit, String type, String nomForme, String code, int suil) {
+        this.libelleProduit = libelleProduit;
+        this.type = type;
         this.nomForme = nomForme;
         this.code = code;
-        this.datePremption = datePremption;
-        this.quantiteInitial = quantiteInitial;
-        this.pu = pu;
+        this.suil = suil;
     }
 
-    public Produit(String designation, int pu, int quantiteInitial, String datePremption, String code) {
-        this.designation = designation;
-        this.pu = pu;
-        this.quantiteInitial = quantiteInitial;
-        this.datePremption = datePremption;
+    public Produit(String libelleProduit, String type, String nomForme, String code, int suil, int pu, String date) {
+        this.libelleProduit = libelleProduit;
+        this.type = type;
+        this.nomForme = nomForme;
         this.code = code;
+        this.suil = suil;
+        this.pu = pu;
+        this.date = date;
+    }
+
+    public int getSuil() {
+        return suil;
+    }
+
+    public void setSuil(int suil) {
+        this.suil = suil;
     }
 
     public String getCode() {
@@ -36,44 +45,22 @@ public class Produit {
         this.code = code;
     }
 
-    public String getDatePremption() {
-        return datePremption;
-    }
-
-    public void setDatePremption(String datePremption) {
-        this.datePremption = datePremption;
-    }
-
-    public int getPu() {
-        return pu;
-    }
-
-    public void setPu(int pu) {
-        this.pu = pu;
-    }
-
-    public Produit(String libelleType, String designation, String nomForme, int quantiteInitial) {
-        this.libelleType = libelleType;
-        this.designation = designation;
-        this.nomForme = nomForme;
-        this.quantiteInitial = quantiteInitial;
-    }
     public Produit(){}
 
-    public String getLibelleType() {
-        return libelleType;
+    public String getLibelleProduit() {
+        return libelleProduit;
     }
 
-    public void setLibelleType(String libelleType) {
-        this.libelleType = libelleType;
+    public void setLibelleProduit(String libelleProduit) {
+        this.libelleProduit = libelleProduit;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getType() {
+        return type;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getNomForme() {
@@ -84,11 +71,19 @@ public class Produit {
         this.nomForme = nomForme;
     }
 
-    public int getQuantiteInitial() {
-        return quantiteInitial;
+    public int getPu() {
+        return pu;
     }
 
-    public void setQuantiteInitial(int quantiteInitial) {
-        this.quantiteInitial = quantiteInitial;
+    public void setPu(int pu) {
+        this.pu = pu;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

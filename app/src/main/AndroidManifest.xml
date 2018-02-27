@@ -82,6 +82,9 @@
         <activity android:name=".ChangePasswordActivity" android:windowSoftInputMode="stateHidden">
 
         </activity>
+
+        <activity android:name=".MutuelleActivity" android:label="Mutuelle" android:windowSoftInputMode="stateHidden">
+        </activity>
     </application>
 
 </manifest>

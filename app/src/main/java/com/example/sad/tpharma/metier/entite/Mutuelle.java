@@ -1,10 +1,22 @@
 package com.example.sad.tpharma.metier.entite;
 
 public class Mutuelle {
+    private int idMutuelle;
     private String nomMutuelle;
     private String phoneMutuelle;
     private String adresseMutuelle;
     private String emailMutuelle;
+
+    public Mutuelle() {
+    }
+
+    public Mutuelle(int idMutuelle, String nomMutuelle, String phoneMutuelle, String adresseMutuelle, String emailMutuelle) {
+        this.idMutuelle = idMutuelle;
+        this.nomMutuelle = nomMutuelle;
+        this.phoneMutuelle = phoneMutuelle;
+        this.adresseMutuelle = adresseMutuelle;
+        this.emailMutuelle = emailMutuelle;
+    }
 
     public Mutuelle(String nomMutuelle, String phoneMutuelle, String adresseMutuelle, String emailMutuelle) {
         this.nomMutuelle = nomMutuelle;
