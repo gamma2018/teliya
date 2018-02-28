@@ -19,6 +19,12 @@ public class Produit {
         this.suil = suil;
     }
 
+    public Produit(String libelleProduit, int pu, String date) {
+        this.libelleProduit = libelleProduit;
+        this.pu = pu;
+        this.date = date;
+    }
+
     public Produit(String libelleProduit, String type, String nomForme, String code, int suil, int pu, String date) {
         this.libelleProduit = libelleProduit;
         this.type = type;

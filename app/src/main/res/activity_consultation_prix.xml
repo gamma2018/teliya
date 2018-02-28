@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    tools:context=".InventaireActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:background="#fff"
+    >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/referencement"
+            />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/codeProduit"
+                android:layout_marginStart="15dp"
+                android:id="@+id/codeProduit"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
+        >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+            />
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/date"
+                android:layout_marginStart="15dp"
+                android:inputType="date" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_marginLeft="30dp"
+            >
+
+                <Button
+                    android:id="@+id/ajoutProduit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableRight="@drawable/ic_add_black_24dp"
+                    android:text="Ajout"
+
+                />
+
+                <Button
+                    android:background="@color/colorAccent"
+                    android:id="@+id/ajoutFamilleProduit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:hint="Ajout Famille"
+                    android:drawableRight="@drawable/ic_add_black_24dp"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFF"
+                    android:textColorHint="#FFFFFF"
+                    android:layout_marginLeft="30dp"
+                />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <!--<ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:background="#fff"
+            android:id="@+id/listeInventaire">
+
+        </ListView>-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewsad"
+            android:id="@+id/refresh">
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/gridInventaire"
+                android:numColumns="4">
+
+            </GridView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

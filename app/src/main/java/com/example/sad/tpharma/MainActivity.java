@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
         CardView crdVente = (CardView) findViewById(R.id.vente);
         CardView crdHistoriqueVente = (CardView) findViewById(R.id.historiquevente);
@@ -136,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MutuelleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        crdLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ConsultationPrixActivity.class);
                 startActivity(intent);
             }
         });

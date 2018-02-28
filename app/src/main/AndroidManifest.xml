@@ -85,6 +85,10 @@
 
         <activity android:name=".MutuelleActivity" android:label="Mutuelle" android:windowSoftInputMode="stateHidden">
         </activity>
+        <activity android:name=".ConsultationPrixActivity" android:label="Consultation de Prix" android:windowSoftInputMode="stateHidden">
+        </activity>
+        <activity android:name=".ImprimerConsultationPrixActivity" android:label="Consultation de Prix" android:windowSoftInputMode="stateHidden">
+        </activity>
     </application>
 
 </manifest>
