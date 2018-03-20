@@ -1,0 +1,13 @@
+package com.example.sad.tpharma;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class ReceptionProduitCommandeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reception_produit_commande);
+    }
+}

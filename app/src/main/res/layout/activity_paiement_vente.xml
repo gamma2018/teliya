@@ -3,16 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundcolor"
-    android:padding="40dp">
+    android:padding="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:padding="70dp"
         android:background="#d6d4d4"
-
         >
 
         <LinearLayout
@@ -21,24 +20,60 @@
             android:layout_weight="1"
             android:background="#fff"
             android:weightSum="2"
-            android:padding="20dp"
-            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"
+            android:paddingBottom="5dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nom du mutuelle : "
-                android:padding="15dp"
-                android:layout_weight="1"
-                android:textColor="@color/primaryDark"
-                />
 
             <TextView
-                android:id="@+id/valeurNomMutuelle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mutuelle"
-                android:padding="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="IMPRIMER TICKET"
+                android:textColor="@color/primaryDark"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:weightSum="2"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="1dp"
+            >
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date ex: 01/01/2018"
+                android:padding="1dp"
+                android:layout_weight="1"
+
+                />
+            <TextView
+                android:id="@+id/nomPharmacie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telya Pharma"
+                android:padding="5dp"
+                android:layout_weight="1"
+
+                />
+            <TextView
+                android:id="@+id/valeurNomClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tel : +224 622-35-03-75"
+                android:padding="5dp"
                 android:layout_weight="1"
 
                 />
@@ -51,26 +86,13 @@
             android:background="#fff"
             android:weightSum="2"
             android:padding="20dp"
-            android:layout_marginBottom="5dp"
             >
-            <TextView
+            <ListView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telephone du mutuelle : "
-                android:padding="15dp"
-                android:layout_weight="1"
-                android:textColor="@color/primaryDark"
-                />
+                android:layout_height="200dp"
+                android:id="@+id/listeProduit">
 
-            <TextView
-                android:id="@+id/valeurTelephoneMutuelle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Telephone Mutuelle"
-                android:padding="15dp"
-                android:layout_weight="1"
-
-                />
+            </ListView>
         </LinearLayout>
 
         <LinearLayout
@@ -80,49 +102,22 @@
             android:background="#fff"
             android:weightSum="2"
             android:padding="20dp"
+            android:layout_marginTop="2dp"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email du mutuelle"
+                android:text="Total : "
                 android:padding="15dp"
                 android:layout_weight="1"
                 android:textColor="@color/primaryDark"
                 />
 
             <TextView
-                android:id="@+id/valeurEmailMutuelle"
+                android:id="@+id/montant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Valeur Email Mutuelle"
-                android:padding="15dp"
-                android:layout_weight="1"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:weightSum="2"
-            android:padding="20dp"
-            android:layout_marginTop="5dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="adresse du mutuelle"
-                android:padding="15dp"
-                android:layout_weight="1"
-                android:textColor="@color/primaryDark"
-                />
-
-            <TextView
-                android:id="@+id/valeurAdresseMutuelle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Adresse du mutuelle."
+                android:text="450 000 GNF"
                 android:padding="15dp"
                 android:layout_weight="1"
                 />

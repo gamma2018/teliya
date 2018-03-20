@@ -1,4 +1,4 @@
-package com.example.sad.tpharma;
+package com.example.sad.tpharma.commande;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 
-import com.example.sad.tpharma.adapter.ConsultationPrixGridAdapter;
+import com.example.sad.tpharma.R;
+import com.example.sad.tpharma.VenteActivity;
 import com.example.sad.tpharma.adapter.HistoriqueCommandeGridAdapter;
-import com.example.sad.tpharma.entite.ConsultationItem;
 import com.example.sad.tpharma.entite.HistoriqueCommandeItem;
 import com.example.sad.tpharma.metier.entite.Commande;
-import com.example.sad.tpharma.metier.entite.Produit;
 import com.example.sad.tpharma.metier.traitement.Model;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class HistoriqueCommandeActivity extends AppCompatActivity {
         Button btn = (Button) findViewById(R.id.creer_commande);
         EditText edRecherche = (EditText) findViewById(R.id.edRecherche);
         GridView gridView = (GridView) findViewById(R.id.gridHistoriqueCommande);
-        final HistoriqueCommandeGridAdapter adapter = new HistoriqueCommandeGridAdapter(HistoriqueCommandeActivity.this, R.layout.custum_grid_commande, getData(new Model().getAllCommande()));
+        final HistoriqueCommandeGridAdapter adapter = new HistoriqueCommandeGridAdapter(HistoriqueCommandeActivity.this, R.layout.custom_grid_commande, getData(new Model().getAllCommande()));
         gridView.setAdapter(adapter);
 
         btn.setOnClickListener(new View.OnClickListener() {
