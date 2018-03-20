@@ -1,12 +1,20 @@
 package com.example.sad.tpharma.metier.entite;
 
-public class PorduitCommande {
+public class ProduitCommande {
 
     private int idCommande;
     private String grossiste;
     private String produit;
     private int prixUnitaire;
     private int quantite;
+
+    public ProduitCommande(int idCommande, String grossiste, String produit, int prixUnitaire, int quantite) {
+        this.idCommande = idCommande;
+        this.grossiste = grossiste;
+        this.produit = produit;
+        this.prixUnitaire = prixUnitaire;
+        this.quantite = quantite;
+    }
 
     public int getIdCommande() {
         return idCommande;

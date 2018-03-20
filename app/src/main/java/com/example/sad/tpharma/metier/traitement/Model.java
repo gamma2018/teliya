@@ -3,10 +3,13 @@ package com.example.sad.tpharma.metier.traitement;
 import com.example.sad.tpharma.metier.ConnexionDB;
 import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.entite.Client;
+import com.example.sad.tpharma.metier.entite.Commande;
+import com.example.sad.tpharma.metier.entite.FactureGrossiste;
 import com.example.sad.tpharma.metier.entite.FamilleProduit;
 import com.example.sad.tpharma.metier.entite.Grossiste;
 import com.example.sad.tpharma.metier.entite.Mutuelle;
 import com.example.sad.tpharma.metier.entite.Produit;
+import com.example.sad.tpharma.metier.entite.ProduitCommande;
 import com.example.sad.tpharma.metier.entite.User;
 import com.example.sad.tpharma.metier.entite.Utilisateur;
 
@@ -14,6 +17,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
 
@@ -211,6 +215,47 @@ public class Model {
         }
         return  listGrossite;
     }
+
+    public ArrayList<String > getAllGrossiste_()
+    {
+        ArrayList<Grossiste> listGrossite1 = new ArrayList<Grossiste>();
+        Grossiste grossiste1;
+
+        ArrayList<String > listGrossite = new ArrayList<String >();
+        String grossiste;
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql ="{ CALL \"public\".\"ps_getGrossiste\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next())
+            {
+                do {
+                    grossiste1 = new Grossiste(rs.getInt("grossisteid") , rs.getString("nomgrossiste"), rs.getString("telgrossiste"), rs.getString("adressegrossister"));
+                    listGrossite1.add(grossiste1);
+
+                    grossiste = rs.getString("nomgrossiste");
+                    listGrossite.add(grossiste);
+                }while (rs.next());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Fermeture de la base de données.
+        try {
+            con.getCon().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Partager.setListeGrossite(listGrossite1);
+        return  listGrossite;
+    }
+
+
     public void updateGrossiste(int id, Grossiste grossiste)
     {
         con = new ConnexionDB();
@@ -507,6 +552,32 @@ public class Model {
         return client;
     }
 
+    public ArrayList<String> getAllClients()
+    {
+        ArrayList<String> client = new ArrayList<String>();
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_getclients\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+
+            if (rs.next())
+            {
+                do {
+                    client.add(     rs.getString("nom")+" "+
+                                    rs.getString("prenom")
+                              );
+                }while (rs.next());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return client;
+    }
+
     //Get grossiste by id
     public Client getClientByID(int id)
     {
@@ -611,7 +682,6 @@ public class Model {
         }
         return mutuelle;
     }
-
     public ArrayList<String> getAllTypeProduits() {
         ArrayList<String> listTypeProduits = new ArrayList<String>();
 
@@ -660,4 +730,224 @@ public class Model {
         return listFormeProduits;
     }
 
+    public int addCommande()
+    {
+        con = new ConnexionDB();
+        int id = 0;
+        con.connexion();
+        sql ="{ CALL \"public\".\"ps_addCommande\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt("result");
+            }
+            cs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    public void addProduitCommande(ProduitCommande produitCommande)
+    {
+        con = new ConnexionDB();
+        con.connexion();
+        sql ="{ CALL \"public\".\"ps_addProduitInCommande\"(?,?,?,?,?)}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            cs.setInt(1, produitCommande.getIdCommande());
+            cs.setString(2, produitCommande.getGrossiste());
+            cs.setString(3, produitCommande.getProduit());
+            cs.setInt(4, produitCommande.getPrixUnitaire());
+            cs.setInt(5, produitCommande.getQuantite());
+
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<Produit> getAllProduitAVendre()
+    {
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_getProduitsAVendre\"}";
+        ArrayList<Produit> listeProd = new ArrayList<Produit>();
+        Produit produit;
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next())
+            {
+                do {
+                    produit = new Produit( rs.getString("nomProduits"),
+                            rs.getString("typeProduits"),
+                            rs.getString("formeProduits"),
+                            rs.getString("codeProduits"),
+                            rs.getInt("seuilProduits"),
+                            rs.getInt("puProduits"),
+                            rs.getString("dateProduits"),
+                            rs.getInt("quantiteProduit")
+                    );
+                    listeProd.add(produit);
+
+                }while (rs.next());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            con.getCon().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeProd;
+    }
+    public ArrayList<Commande> getAllCommande() {
+        ArrayList<Commande> listCommande = new ArrayList<Commande>();
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_listeCommandeFournisseur\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listCommande.add(
+                            new Commande(
+                                    rs.getInt("idCmd"),
+                                    rs.getString("dateCmd"),
+                                    rs.getString("statutCmd"),
+                                    rs.getString("grossisteCmd"),
+                                    rs.getInt("nbrProduits"),
+                                    rs.getInt("montantCmd")
+                            ));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return  listCommande;
+    }
+
+    public ArrayList<Commande> getAllCommandeAReceptionne() {
+        ArrayList<Commande> listCommande = new ArrayList<Commande>();
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_listeCommandeAReceptionne\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listCommande.add(
+                            new Commande(
+                                    rs.getInt("idCmd"),
+                                    rs.getString("dateCmd"),
+                                    rs.getString("statutCmd"),
+                                    rs.getString("grossisteCmd"),
+                                    rs.getInt("nbrProduits"),
+                                    rs.getInt("montantCmd")
+                            ));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return  listCommande;
+    }
+
+    public ArrayList<Produit> getAllProduitCommandeFournisseur(int commande)
+    {
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_listeProduitCommandeFournisseur\"(?)}";
+        ArrayList<Produit> listeProd = new ArrayList<Produit>();
+        Produit produit;
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            cs.setInt(1, commande);
+            rs = cs.executeQuery();
+            if (rs.next())
+            {
+                do {
+                    produit = new Produit( rs.getString("libelleProd"),
+                            rs.getInt("puProduit"),
+                            rs.getInt("qtProduit")
+                    );
+                    listeProd.add(produit);
+
+                }while (rs.next());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            con.getCon().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeProd;
+    }
+    public void livraisonCommande(int idCommande, List<Produit> produit)
+    {
+        con = new ConnexionDB();
+        con.connexion();
+        sql ="{ CALL \"public\".\"ps_addLivraisonProduitCommande\"(?,?,?,?)}";
+
+        try {
+            for (int i=0;i<produit.size();i++) {
+                cs = con.getCon().prepareCall(sql);
+                cs.setInt(1, idCommande);
+                cs.setString(2, produit.get(i).getLibelleProduit());
+                cs.setInt(3, produit.get(i).getPu());
+                cs.setInt(4, produit.get(i).getQuantite());
+
+                cs.executeUpdate();
+            }
+            cs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<FactureGrossiste> getFactureGrossiste() {
+        ArrayList<FactureGrossiste> listFacture = new ArrayList<FactureGrossiste>();
+
+        con = new ConnexionDB();
+        con.connexion();
+        sql = "{ CALL \"public\".\"ps_getAllFactureFournisseur\"}";
+
+        try {
+            cs = con.getCon().prepareCall(sql);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                do {
+                    listFacture.add(
+                            new FactureGrossiste(
+                                    rs.getString("numero"),
+                                    rs.getInt("montantfac"),
+                                    rs.getString("datefac"),
+                                    rs.getString("grossistefac")
+                            ));
+                } while (rs.next());
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return  listFacture;
+    }
 }

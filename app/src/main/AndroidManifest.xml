@@ -11,83 +11,135 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"> </activity>
-        <activity android:name=".VenteActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
-                android:label="Historique"
+            android:name=".VenteActivity"
+            android:windowSoftInputMode="stateHidden"
+            />
+        <activity
             android:name=".Historique"
+            android:label="Historique"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Commande"
             android:name=".CommandeActivity"
+            android:label="Commande"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Nouvelle Commande"
             android:name=".commande.NouvelleCommandeActivity"
+            android:label="Nouvelle Commande"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Historique Commande"
             android:name=".commande.HistoriqueCommandeActivity"
+            android:label="Historique Commande"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Facture"
             android:name=".FactureActivity"
+            android:label="Facture"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Note de frais"
             android:name=".facture.NoteFraisActivity"
+            android:label="Note de frais"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Facture Client"
             android:name=".facture.FactureClientActivity"
+            android:label="Facture Client"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Facture Fournisseur"
             android:name=".facture.FactureFournisseurActivity"
+            android:label="Facture Fournisseur"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Inventaire"
             android:name=".InventaireActivity"
+            android:label="Inventaire"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Retour Produit"
             android:name=".RetourProduitActivity"
+            android:label="Retour Produit"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Note frais"
             android:name=".NoteFraisActivity"
+            android:label="Note frais"
             android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Client"
             android:name=".ClientActivity"
+            android:label="Client"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UserActivity"
             android:label="Utilisateur"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".GrossisteActivity" android:windowSoftInputMode="stateHidden" />
         <activity
-                android:label="Reimpression de ticket"
+            android:name=".GrossisteActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".ReimpressionTicketActivity"
-            android:windowSoftInputMode="stateHidden"> </activity>
+            android:label="Reimpression de ticket"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChangePasswordActivity" android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:windowSoftInputMode="stateHidden"
+            >
 
         </activity>
+        <activity
+            android:name=".MutuelleActivity"
+            android:label="Mutuelle"
+            android:windowSoftInputMode="stateHidden">
 
-        <activity android:name=".MutuelleActivity" android:label="Mutuelle" android:windowSoftInputMode="stateHidden">
         </activity>
-        <activity android:name=".ConsultationPrixActivity" android:label="Consultation de Prix" android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".ConsultationPrixActivity"
+            android:label="Consultation de Prix"
+            android:windowSoftInputMode="stateHidden">
+
         </activity>
-        <activity android:name=".ImprimerConsultationPrixActivity" android:label="Consultation de Prix" android:windowSoftInputMode="stateHidden">
+        <activity
+            android:name=".ImprimerConsultationPrixActivity"
+            android:label="Consultation de Prix"
+            android:windowSoftInputMode="stateHidden"
+            >
+
+        </activity>
+        <activity
+            android:name=".CreeCommandeActivity"
+            android:label="Commande"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
+            android:name=".AjoutQuantiteProduitCommande"
+            android:label="Commande"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
+            android:name=".ResumeActivity"
+            android:label="Resume"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity
+            android:name=".commande.ReceptionCommandeActivity"
+            android:label="Reception"
+            android:windowSoftInputMode="stateHidden">
+
+        </activity>
+        <activity android:name=".ReceptionProduitCommandeActivity">
+
         </activity>
     </application>
 

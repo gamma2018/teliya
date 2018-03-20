@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import com.example.sad.tpharma.R;
 import com.example.sad.tpharma.entite.InventaireItem;
-import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.entite.Produit;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandeQuantiteAdapter extends ArrayAdapter<InventaireItem>{
+public class ReceptionCommandeListViewAdapter extends ArrayAdapter<InventaireItem>{
 
     Context context;
     int resLayout;
@@ -26,7 +25,7 @@ public class CommandeQuantiteAdapter extends ArrayAdapter<InventaireItem>{
     List<Produit> produitsList = new ArrayList<Produit>();
 
 
-    public CommandeQuantiteAdapter(@NonNull Context context, int resource, @NonNull List<InventaireItem> objects) {
+    public ReceptionCommandeListViewAdapter(@NonNull Context context, int resource, @NonNull List<InventaireItem> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resLayout = resource;
@@ -41,13 +40,18 @@ public class CommandeQuantiteAdapter extends ArrayAdapter<InventaireItem>{
          final View v = View.inflate(context, resLayout, null);
         TextView tvLibelleProd = (TextView) v.findViewById(R.id.nomProduit);
         EditText edPu = (EditText) v.findViewById(R.id.puProduit);
+        edPu.setEnabled(false);
         final EditText edQuantite = (EditText) v.findViewById(R.id.quantiteProduit);
 
         final Produit produit = new Produit();
 
         tvLibelleProd.setText(listeItems.get(position).getLibelle());
+        edPu.setText(String.valueOf(listeItems.get(position).getMontant()));
+        edQuantite.setText(String.valueOf(listeItems.get(position).getQuantite()));
 
         produit.setLibelleProduit(listeItems.get(position).getLibelle());
+        produit.setPu(listeItems.get(position).getMontant());
+        produit.setQuantite(listeItems.get(position).getQuantite());
 
 
         edPu.addTextChangedListener(new TextChangedListener<EditText>(edPu) {
@@ -61,7 +65,9 @@ public class CommandeQuantiteAdapter extends ArrayAdapter<InventaireItem>{
         edQuantite.addTextChangedListener(new TextChangedListener<EditText>(edQuantite) {
             @Override
             public void onTextChanged(EditText target, Editable s) {
-                produit.setQuantite(Integer.parseInt(String.valueOf(s)));
+
+                if (!s.toString().equals(""))
+                    produit.setQuantite(Integer.parseInt(String.valueOf(s)));
             }
         });
 

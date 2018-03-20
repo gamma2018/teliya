@@ -10,31 +10,10 @@
         android:layout_marginTop="20dp"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            >
-            <Button
-                android:id="@+id/creer_note_frais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nouvelleFacture"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:padding="10dp"
-                android:drawableEnd="@drawable/ic_add_black_24dp"
-                android:background="#fff"
-                android:layout_marginStart="10dp"
 
-                />
-
-
-        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_weight="1"

@@ -6,7 +6,9 @@ import android.widget.GridView;
 
 import com.example.sad.tpharma.R;
 import com.example.sad.tpharma.adapter.FactureFournisseurGridAdapter;
-import com.example.sad.tpharma.entite.HistoriqueItem;
+import com.example.sad.tpharma.entite.FactureGrossisteItem;
+import com.example.sad.tpharma.metier.entite.FactureGrossiste;
+import com.example.sad.tpharma.metier.traitement.Model;
 
 import java.util.ArrayList;
 
@@ -18,201 +20,25 @@ public class FactureFournisseurActivity extends AppCompatActivity {
         setContentView(R.layout.activity_facture_fournisseur);
 
         GridView gridView = (GridView) findViewById(R.id.gridFactFournisseur);
-        FactureFournisseurGridAdapter adapter = new FactureFournisseurGridAdapter(this, R.layout.custum_grid_facture_fournisseur, getData());
+        FactureFournisseurGridAdapter adapter = new FactureFournisseurGridAdapter(this, R.layout.custum_grid_facture_fournisseur, getData(new Model().getFactureGrossiste()));
         gridView.setAdapter(adapter);
     }
 
-    private ArrayList<HistoriqueItem> getData()
+    private ArrayList<FactureGrossisteItem> getData(ArrayList<FactureGrossiste> factureGrossistes)
     {
-        ArrayList<HistoriqueItem> items = new ArrayList<HistoriqueItem>();
+        ArrayList<FactureGrossisteItem> items = new ArrayList<FactureGrossisteItem>();
 
-        HistoriqueItem item = new HistoriqueItem();
+        FactureGrossisteItem item;
 
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        items.add(item);
-
-        item = new HistoriqueItem();
-        item.setLibelle("Paracetmol");
-        item.setCodeProd("#P001");
-        item.setMontant(50000);
-        item.setDate("12/02/2018");
-        items.add(item);
-
-
+        for (int i=0; i<factureGrossistes.size(); i++)
+        {
+            item = new FactureGrossisteItem();
+            item.setNumeroFacture(factureGrossistes.get(i).getNumeroFactureGrossiste());
+            item.setDateFacture(factureGrossistes.get(i).getDateFactureGrossiste());
+            item.setMontant(factureGrossistes.get(i).getMontantFactureGrossiste());
+            item.setGrossiste(factureGrossistes.get(i).getGrossiste());
+            items.add(item);
+        }
         return items;
     }
 }

@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="305dp"
-    android:layout_height="80dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="5dp">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+
+    <android.support.v7.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/vente23"
+        android:layout_width="305dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -16,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-
+                android:background="@color/custumColore"
                 >
 
                 <LinearLayout
@@ -32,8 +42,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginStart="5dp"
                         android:layout_gravity="start"
-                        android:text="User"
-                        android:id="@+id/libelleFourn"/>
+                        android:text="Facture"
+                        android:id="@+id/numeroFacture"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -71,11 +81,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start"
-                    android:text="P0000001"
+                    android:text="Grossiste"
                     android:padding="5dp"
                     android:textColor="#000"
                     android:layout_weight="1"
-                    android:id="@+id/codeFactureFourn"/>
+                    android:id="@+id/grossiste"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -90,7 +101,6 @@
 
             </LinearLayout>
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-
-
-</android.support.v7.widget.CardView>
+</LinearLayout>

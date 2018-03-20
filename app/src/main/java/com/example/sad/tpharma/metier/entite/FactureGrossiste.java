@@ -1,28 +1,53 @@
 package com.example.sad.tpharma.metier.entite;
 
-public class FactureCommande {
-    private int factureCommandId;
+public class FactureGrossiste {
+    private int factureGrossisteId;
     private int commandeId;
-    private String numeroFactureCommande;
-    private int montantFactureCommande;
-    private int resteFactureCommande;
-    private String statusFactureCommande;
+    private String numeroFactureGrossiste;
+    private int montantFactureGrossiste;
+    private int resteFactureGrossiste;
+    private String statusFactureGrossiste;
+    private String dateFactureGrossiste;
+    private String grossiste;
 
-    public FactureCommande(int factureCommandId, int commandeId, String numeroFactureCommande, int montantFactureCommande, int resteFactureCommande, String statusFactureCommande) {
-        this.factureCommandId = factureCommandId;
+    public FactureGrossiste(int factureGrossisteId, int commandeId, String numeroFactureGrossiste, int montantFactureGrossiste, int resteFactureGrossiste, String statusFactureGrossiste) {
+        this.factureGrossisteId = factureGrossisteId;
         this.commandeId = commandeId;
-        this.numeroFactureCommande = numeroFactureCommande;
-        this.montantFactureCommande = montantFactureCommande;
-        this.resteFactureCommande = resteFactureCommande;
-        this.statusFactureCommande = statusFactureCommande;
+        this.numeroFactureGrossiste = numeroFactureGrossiste;
+        this.montantFactureGrossiste = montantFactureGrossiste;
+        this.resteFactureGrossiste = resteFactureGrossiste;
+        this.statusFactureGrossiste = statusFactureGrossiste;
     }
 
-    public int getFactureCommandId() {
-        return factureCommandId;
+    public FactureGrossiste(String numeroFactureGrossiste, int montantFactureGrossiste, String dateFactureGrossiste, String grossiste) {
+        this.numeroFactureGrossiste = numeroFactureGrossiste;
+        this.montantFactureGrossiste = montantFactureGrossiste;
+        this.dateFactureGrossiste = dateFactureGrossiste;
+        this.grossiste = grossiste;
     }
 
-    public void setFactureCommandId(int factureCommandId) {
-        this.factureCommandId = factureCommandId;
+    public String getDateFactureGrossiste() {
+        return dateFactureGrossiste;
+    }
+
+    public void setDateFactureGrossiste(String dateFactureGrossiste) {
+        this.dateFactureGrossiste = dateFactureGrossiste;
+    }
+
+    public String getGrossiste() {
+        return grossiste;
+    }
+
+    public void setGrossiste(String grossiste) {
+        this.grossiste = grossiste;
+    }
+
+    public int getFactureGrossisteId() {
+        return factureGrossisteId;
+    }
+
+    public void setFactureGrossisteId(int factureGrossisteId) {
+        this.factureGrossisteId = factureGrossisteId;
     }
 
     public int getCommandeId() {
@@ -33,35 +58,35 @@ public class FactureCommande {
         this.commandeId = commandeId;
     }
 
-    public String getNumeroFactureCommande() {
-        return numeroFactureCommande;
+    public String getNumeroFactureGrossiste() {
+        return numeroFactureGrossiste;
     }
 
-    public void setNumeroFactureCommande(String numeroFactureCommande) {
-        this.numeroFactureCommande = numeroFactureCommande;
+    public void setNumeroFactureGrossiste(String numeroFactureGrossiste) {
+        this.numeroFactureGrossiste = numeroFactureGrossiste;
     }
 
-    public int getMontantFactureCommande() {
-        return montantFactureCommande;
+    public int getMontantFactureGrossiste() {
+        return montantFactureGrossiste;
     }
 
-    public void setMontantFactureCommande(int montantFactureCommande) {
-        this.montantFactureCommande = montantFactureCommande;
+    public void setMontantFactureGrossiste(int montantFactureGrossiste) {
+        this.montantFactureGrossiste = montantFactureGrossiste;
     }
 
-    public int getResteFactureCommande() {
-        return resteFactureCommande;
+    public int getResteFactureGrossiste() {
+        return resteFactureGrossiste;
     }
 
-    public void setResteFactureCommande(int resteFactureCommande) {
-        this.resteFactureCommande = resteFactureCommande;
+    public void setResteFactureGrossiste(int resteFactureGrossiste) {
+        this.resteFactureGrossiste = resteFactureGrossiste;
     }
 
-    public String getStatusFactureCommande() {
-        return statusFactureCommande;
+    public String getStatusFactureGrossiste() {
+        return statusFactureGrossiste;
     }
 
-    public void setStatusFactureCommande(String statusFactureCommande) {
-        this.statusFactureCommande = statusFactureCommande;
+    public void setStatusFactureGrossiste(String statusFactureGrossiste) {
+        this.statusFactureGrossiste = statusFactureGrossiste;
     }
 }

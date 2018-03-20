@@ -55,12 +55,18 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:background="#edb6a2"
-                        android:padding="15dp"
-                        android:layout_weight="1"
                         android:layout_marginBottom="15dp"
-                        >
+                        android:layout_weight="1"
+                        android:background="#edb6a2"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/listeProduitCoche">
+
+                        </ListView>
 
 
                     </LinearLayout>
@@ -76,7 +82,10 @@
                         android:layout_marginBottom="15dp"
                         >
 
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/montantTotal"/>
 
                     </LinearLayout>
 
@@ -104,29 +113,24 @@
                         android:layout_weight="1"
                         >
 
-                        <!--Layout Bouton Client-->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:orientation="horizontal"
-                            android:background="#f6eae5"
-                            android:padding="15dp"
-                            android:layout_weight="0"
-                            >
 
-
-                        </LinearLayout>
 
                         <!--Layout Bouton Validation.-->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:background="#f6eae5"
                             android:padding="15dp"
                             android:layout_weight="0"
                             android:layout_marginTop="10dp"
                             >
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Paiement"
+                                android:id="@+id/paiement"/>
 
 
                         </LinearLayout>
@@ -138,11 +142,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:background="#765e55"
+                        android:background="#f6cec0"
                         android:padding="15dp"
                         android:layout_weight="1"
                         >
 
+                            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:met_floatingLabel="normal"
+                                android:inputType="text"
+                                android:id="@+id/nomClient"
+                                android:hint="@string/client"
+                                android:paddingEnd="0dp"
+                                android:drawablePadding="5dp"
+                                />
 
 
                     </LinearLayout>
@@ -171,7 +185,6 @@
                 android:layout_marginBottom="20dp"
                 android:background="#004D40"
                 android:gravity="end"
-
                 >
 
                 <EditText
@@ -201,7 +214,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/gridVente"
-                    android:numColumns="4">
+                    android:numColumns="2">
 
                 </GridView>
 

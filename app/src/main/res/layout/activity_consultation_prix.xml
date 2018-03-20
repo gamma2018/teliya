@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/codeProduit"
             android:layout_marginStart="15dp"
-            android:id="@+id/libelleProduit"
+            android:id="@+id/statutCommande"
             />
 
 
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/effectuerUnecommande"
+        android:text="Consulter"
         android:id="@+id/consulterBtn"/>
     <View
         android:layout_width="match_parent"

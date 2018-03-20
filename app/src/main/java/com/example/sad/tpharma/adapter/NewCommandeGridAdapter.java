@@ -1,35 +1,34 @@
 package com.example.sad.tpharma.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sad.tpharma.R;
-import com.example.sad.tpharma.ReceptionProduitCommandeActivity;
-import com.example.sad.tpharma.entite.ReceptionCommandeItem;
+import com.example.sad.tpharma.entite.CommandeItem;
 import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.entite.Produit;
 
 import java.util.ArrayList;
 
-public class ReceptionCommandeGridAdapter extends BaseAdapter implements Filterable{
+public class NewCommandeGridAdapter extends BaseAdapter implements Filterable{
 
     Context c;
     int layout;
-    ArrayList<ReceptionCommandeItem> items;
+    ArrayList<CommandeItem> items;
     ArrayList<Produit> produitsSelectionne = new ArrayList<Produit>();
 
-    ArrayList<ReceptionCommandeItem> filterList;
-    HistoriqueCommandeCustomFilter filter;
+    ArrayList<CommandeItem> filterList;
+    CommandeCustomFilter filter;
 
-    public ReceptionCommandeGridAdapter(Context c, int layout, ArrayList<ReceptionCommandeItem> items) {
+    public NewCommandeGridAdapter(Context c, int layout, ArrayList<CommandeItem> items) {
         this.c = c;
         this.layout = layout;
         this.items = items;
@@ -60,25 +59,50 @@ public class ReceptionCommandeGridAdapter extends BaseAdapter implements Filtera
             convertView = inflater.inflate(layout, null);
         }
 
-            TextView statutCommande = (TextView) convertView.findViewById(R.id.idStatut);
-            TextView montant = (TextView) convertView.findViewById(R.id.montantTotal);
+            TextView libelleProduit = (TextView) convertView.findViewById(R.id.produitLib);
+            TextView montant = (TextView) convertView.findViewById(R.id.montant);
+            final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkProduit);
             TextView date = (TextView) convertView.findViewById(R.id.date);
-            TextView nombreProduit = (TextView) convertView.findViewById(R.id.nbrProduits);
 
             //Chargement
-            statutCommande.setText(items.get(position).getStatutCommande());
+            libelleProduit.setText(items.get(position).getLibelleProduit());
             montant.setText(String.valueOf(items.get(position).getMontant())+" GNF");
             date.setText(items.get(position).getDateProduit());
-            nombreProduit.setText(String.valueOf(items.get(position).getNombreProd()));
-            
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (!checkBox.isChecked())
+                    {
+                        checkBox.setChecked(false);
+                        for (int i = 0; i< produitsSelectionne.size(); i++)
+                        {
+                            if (produitsSelectionne.get(i).getLibelleProduit().equals(items.get(position).getLibelleProduit()))
+                            {
+                                produitsSelectionne.remove(i);
+                            }
+                        }
+                        Partager.setListeProuits(produitsSelectionne);
+                    }
+                    else {
+                        checkBox.setChecked(true);
+                        produitsSelectionne.add(new Produit(items.get(position).getLibelleProduit(), items.get(position).getMontant(), items.get(position).getDateProduit()));
+                        Partager.setListeProuits(produitsSelectionne);
+                    }
+                }
+            });
+
+
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Partager.setIdCommande(items.get(position).getIdCommande());
-                    Intent intent = new Intent(c, ReceptionProduitCommandeActivity.class);
-                    c.startActivity(intent);
+
+                    Toast.makeText(c, "Click grid", Toast.LENGTH_SHORT).show();
+
                 }
             });
+
 
         return convertView;
     }
@@ -87,12 +111,12 @@ public class ReceptionCommandeGridAdapter extends BaseAdapter implements Filtera
     public Filter getFilter() {
         if (filter == null)
         {
-            filter = new HistoriqueCommandeCustomFilter();
+            filter = new CommandeCustomFilter();
         }
         return filter;
     }
 
-    private class HistoriqueCommandeCustomFilter extends Filter
+    private class CommandeCustomFilter extends Filter
     {
 
         @Override
@@ -102,16 +126,14 @@ public class ReceptionCommandeGridAdapter extends BaseAdapter implements Filtera
             if (constraint != null && constraint.length() > 0)
             {
                 constraint = constraint.toString().toUpperCase();
-                ArrayList<ReceptionCommandeItem> filters = new ArrayList<ReceptionCommandeItem>();
+                ArrayList<CommandeItem> filters = new ArrayList<CommandeItem>();
                 for (int i=0; i<filterList.size(); i++)
                 {
-                    if (filterList.get(i).getStatutCommande().toUpperCase().contains(constraint))
+                    if (filterList.get(i).getLibelleProduit().toUpperCase().contains(constraint))
                     {
-                        ReceptionCommandeItem inventaireItem = new ReceptionCommandeItem(
-                                filterList.get(i).getIdCommande(),
+                        CommandeItem inventaireItem = new CommandeItem(
                                 filterList.get(i).getMontant(),
-                                filterList.get(i).getNombreProd(),
-                                filterList.get(i).getStatutCommande(),
+                                filterList.get(i).getLibelleProduit(),
                                 filterList.get(i).getDateProduit()
                         );
                         filters.add(inventaireItem);
@@ -132,7 +154,7 @@ public class ReceptionCommandeGridAdapter extends BaseAdapter implements Filtera
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            items = (ArrayList<ReceptionCommandeItem>) results.values;
+            items = (ArrayList<CommandeItem>) results.values;
             notifyDataSetChanged();
         }
     }

@@ -1,4 +1,4 @@
-package com.example.sad.sogamh.adapters;
+package com.example.sad.tpharma.adapter;
 
 import android.text.Editable;
 import android.text.TextWatcher;

@@ -4,6 +4,15 @@ public class InventaireItem {
 
     private String libelle, codeProd, date;
     private int montant;
+    private int quantite;
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
 
     public String getLibelle() {
         return libelle;

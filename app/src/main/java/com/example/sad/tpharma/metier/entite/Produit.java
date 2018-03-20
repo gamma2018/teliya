@@ -8,8 +8,15 @@ public class Produit {
     private String code;
     private int suil;
     private int pu;
+    private int quantite;
     private String date;
 
+
+    public Produit(String libelleProduit, int pu, int quantite) {
+        this.libelleProduit = libelleProduit;
+        this.pu = pu;
+        this.quantite = quantite;
+    }
 
     public Produit(String libelleProduit, String type, String nomForme, String code, int suil) {
         this.libelleProduit = libelleProduit;
@@ -34,6 +41,16 @@ public class Produit {
         this.pu = pu;
         this.date = date;
     }
+    public Produit(String libelleProduit, String type, String nomForme, String code, int suil, int pu, String date, int quantite) {
+        this.libelleProduit = libelleProduit;
+        this.type = type;
+        this.nomForme = nomForme;
+        this.code = code;
+        this.suil = suil;
+        this.pu = pu;
+        this.date = date;
+        this.quantite = quantite;
+    }
 
     public int getSuil() {
         return suil;
@@ -52,6 +69,7 @@ public class Produit {
     }
 
     public Produit(){}
+
 
     public String getLibelleProduit() {
         return libelleProduit;
@@ -91,5 +109,13 @@ public class Produit {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
     }
 }

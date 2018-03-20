@@ -12,23 +12,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sad.tpharma.R;
-import com.example.sad.tpharma.entite.ConsultationItem;
+import com.example.sad.tpharma.entite.HistoriqueCommandeItem;
 import com.example.sad.tpharma.metier.Partager;
 import com.example.sad.tpharma.metier.entite.Produit;
 
 import java.util.ArrayList;
 
-public class ConsultationPrixGridAdapter extends BaseAdapter implements Filterable{
+public class HistoriqueCommandeGridAdapter extends BaseAdapter implements Filterable{
 
     Context c;
     int layout;
-    ArrayList<ConsultationItem> items;
+    ArrayList<HistoriqueCommandeItem> items;
     ArrayList<Produit> produitsSelectionne = new ArrayList<Produit>();
 
-    ArrayList<ConsultationItem> filterList;
-    ConsultationPrixCustomFilter filter;
+    ArrayList<HistoriqueCommandeItem> filterList;
+    HistoriqueCommandeCustomFilter filter;
 
-    public ConsultationPrixGridAdapter(Context c, int layout, ArrayList<ConsultationItem> items) {
+    public HistoriqueCommandeGridAdapter(Context c, int layout, ArrayList<HistoriqueCommandeItem> items) {
         this.c = c;
         this.layout = layout;
         this.items = items;
@@ -59,50 +59,16 @@ public class ConsultationPrixGridAdapter extends BaseAdapter implements Filterab
             convertView = inflater.inflate(layout, null);
         }
 
-            TextView libelleProduit = (TextView) convertView.findViewById(R.id.produitLib);
-            TextView montant = (TextView) convertView.findViewById(R.id.montant);
-            final CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkProduit);
+            TextView statutCommande = (TextView) convertView.findViewById(R.id.idStatut);
+            TextView montant = (TextView) convertView.findViewById(R.id.montantTotal);
             TextView date = (TextView) convertView.findViewById(R.id.date);
+            TextView nombreProduit = (TextView) convertView.findViewById(R.id.nbrProduits);
 
             //Chargement
-            libelleProduit.setText(items.get(position).getLibelleProduit());
+            statutCommande.setText(items.get(position).getStatutCommande());
             montant.setText(String.valueOf(items.get(position).getMontant())+" GNF");
             date.setText(items.get(position).getDateProduit());
-
-            checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (!checkBox.isChecked())
-                    {
-                        checkBox.setChecked(false);
-                        for (int i = 0; i< produitsSelectionne.size(); i++)
-                        {
-                            if (produitsSelectionne.get(i).getLibelleProduit().equals(items.get(position).getLibelleProduit()))
-                            {
-                                produitsSelectionne.remove(i);
-                            }
-                        }
-                        Partager.setListeProuits(produitsSelectionne);
-                    }
-                    else {
-                        checkBox.setChecked(true);
-                        produitsSelectionne.add(new Produit(items.get(position).getLibelleProduit(), items.get(position).getMontant(), items.get(position).getDateProduit()));
-                        Partager.setListeProuits(produitsSelectionne);
-                    }
-                }
-            });
-
-
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Toast.makeText(c, "Click grid", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
+            nombreProduit.setText(String.valueOf(items.get(position).getNombreProd()));
 
         return convertView;
     }
@@ -111,12 +77,12 @@ public class ConsultationPrixGridAdapter extends BaseAdapter implements Filterab
     public Filter getFilter() {
         if (filter == null)
         {
-            filter = new ConsultationPrixCustomFilter();
+            filter = new HistoriqueCommandeCustomFilter();
         }
         return filter;
     }
 
-    private class ConsultationPrixCustomFilter extends Filter
+    private class HistoriqueCommandeCustomFilter extends Filter
     {
 
         @Override
@@ -126,14 +92,15 @@ public class ConsultationPrixGridAdapter extends BaseAdapter implements Filterab
             if (constraint != null && constraint.length() > 0)
             {
                 constraint = constraint.toString().toUpperCase();
-                ArrayList<ConsultationItem> filters = new ArrayList<ConsultationItem>();
+                ArrayList<HistoriqueCommandeItem> filters = new ArrayList<HistoriqueCommandeItem>();
                 for (int i=0; i<filterList.size(); i++)
                 {
-                    if (filterList.get(i).getLibelleProduit().toUpperCase().contains(constraint))
+                    if (filterList.get(i).getStatutCommande().toUpperCase().contains(constraint))
                     {
-                        ConsultationItem inventaireItem = new ConsultationItem(
+                        HistoriqueCommandeItem inventaireItem = new HistoriqueCommandeItem(
                                 filterList.get(i).getMontant(),
-                                filterList.get(i).getLibelleProduit(),
+                                filterList.get(i).getNombreProd(),
+                                filterList.get(i).getStatutCommande(),
                                 filterList.get(i).getDateProduit()
                         );
                         filters.add(inventaireItem);
@@ -154,7 +121,7 @@ public class ConsultationPrixGridAdapter extends BaseAdapter implements Filterab
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            items = (ArrayList<ConsultationItem>) results.values;
+            items = (ArrayList<HistoriqueCommandeItem>) results.values;
             notifyDataSetChanged();
         }
     }

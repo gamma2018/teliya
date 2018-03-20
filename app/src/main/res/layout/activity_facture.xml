@@ -109,7 +109,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:id="@+id/note_fournisseur"
+            android:id="@+id/facture_fournisseur"
             android:layout_width="230dp"
             android:layout_height="230dp"
             android:layout_margin="35dp"

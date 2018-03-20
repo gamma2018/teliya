@@ -2,7 +2,7 @@
 <resources>
     <color name="primaryDark">#292b3d</color>
     <color name="graylight">#fafafa</color>
-    <color name="starblue">#09c6df</color>
+    <color name="starblue">#35B629</color>
     <color name="endblue">#0bcce6</color>
 
     <color name="colorPrimary">#FFC107</color>

@@ -1,5 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@color/backgroundcolor"
+    >
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginStart="150dp"
+        android:background="#EEEEEE"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="BON DE COMMANDE"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_margin="2dp"
+        android:background="#c7c2c0"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
+        android:weightSum="5">
+
+        <!--Layout Partie Gauche-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#c7c2c0"
+            android:orientation="horizontal">
+
+            <!--Layout englobante-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#c7c2c0"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:weightSum="3">
+
+                <!--Layout Englobante la listView-->
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:background="#f4f1f0"
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Telya Pharma"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tel: 622-XX-XX-XX"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Taouyah-Ratoma"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <!--Layout Englobante le clavier et validation -->
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="1"
+                    android:background="#f4f1f0"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/grossiste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pharma Guinee"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/telGrossiste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tel: 622-XX-XX-XX"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/adresseGrossiste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dixinn-Dixinn"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:background="#f4f1f0"
+                    android:orientation="vertical"
+                    android:padding="2dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/montantTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOTAL:    10000 GNF"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--Layout Partie Droite-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="295dp"
+            android:layout_weight="2"
+            android:background="#f4f1f0"
+            android:orientation="vertical">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listeProduitCommande">
+            </ListView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/validerCommande"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="#2eb5af"
+        android:drawableEnd="@drawable/ic_add_black_24dp"
+        android:padding="15dp"
+        android:text="Valider "
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="end"/>
+
+
+
+</LinearLayout>

@@ -21,10 +21,6 @@ public class HomeGridAdapter extends BaseAdapter{
     Context c;
     int layout;
     ArrayList<HomeItem> items;
-    private ArrayList<HomeItem> mOriginalValues;
-    private final Object mLock = new Object();
-    private boolean mNotifyOnChange = true;
-
     public HomeGridAdapter(Context c, int layout, ArrayList<HomeItem> items) {
         this.c = c;
         this.layout = layout;

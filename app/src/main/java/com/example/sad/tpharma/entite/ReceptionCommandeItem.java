@@ -1,17 +1,19 @@
 package com.example.sad.tpharma.entite;
 
-public class HistoriqueCommandeItem {
+public class ReceptionCommandeItem {
 
     private int montant;
+    private int idCommande;
     private String statutCommande;
     private String dateProduit;
     private int nombreProd;
 
 
-    public HistoriqueCommandeItem() {
+    public ReceptionCommandeItem() {
     }
 
-    public HistoriqueCommandeItem(int montant, int nombreProd,String libelleProduit, String dateProduit) {
+    public ReceptionCommandeItem(int idCommande, int montant, int nombreProd, String libelleProduit, String dateProduit) {
+        this.idCommande = idCommande;
         this.montant = montant;
         this.statutCommande = libelleProduit;
         this.dateProduit = dateProduit;
@@ -48,5 +50,13 @@ public class HistoriqueCommandeItem {
 
     public void setNombreProd(int nombreProd) {
         this.nombreProd = nombreProd;
+    }
+
+    public int getIdCommande() {
+        return idCommande;
+    }
+
+    public void setIdCommande(int idCommande) {
+        this.idCommande = idCommande;
     }
 }

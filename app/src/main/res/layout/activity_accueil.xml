@@ -17,9 +17,7 @@
         app:menu="@menu/activity_main_drawer" />
 
     <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        layout="@layout/app_bar_main" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,7 +36,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-30dp">
+                android:layout_marginTop="-40dp">
 
                 <!--Gestion des ventes-->
                 <android.support.v7.widget.CardView
@@ -46,7 +44,7 @@
                     android:clickable="true"
                     android:id="@+id/vente"
                     android:layout_width="180dp"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     android:layout_margin="35dp"
                     app:cardCornerRadius="15dp"
                     android:focusable="true">
@@ -84,7 +82,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:layout_width="180dp"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     android:layout_margin="35dp"
                     android:id="@+id/historiquevente"
                     app:cardCornerRadius="15dp"
@@ -258,7 +256,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-30dp">
+                android:layout_marginTop="-50dp">
 
                 <!--Gestion retours de produits-->
                 <android.support.v7.widget.CardView
@@ -483,7 +481,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-30dp"
+                android:layout_marginTop="-50dp"
                 >
 
                 <!--Gestion loter-->

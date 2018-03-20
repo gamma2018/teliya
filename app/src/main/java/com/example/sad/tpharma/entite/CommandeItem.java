@@ -1,19 +1,19 @@
 package com.example.sad.tpharma.entite;
 
-public class VenteGridItem {
+public class CommandeItem {
 
     private int montant;
     private String libelleProduit;
-    private int qtProduit;
+    private String dateProduit;
 
 
-    public VenteGridItem() {
+    public CommandeItem() {
     }
 
-    public VenteGridItem(int montant, String libelleProduit, int qtProduit) {
+    public CommandeItem(int montant, String libelleProduit, String dateProduit) {
         this.montant = montant;
         this.libelleProduit = libelleProduit;
-        this.qtProduit = qtProduit;
+        this.dateProduit = dateProduit;
     }
 
     public int getMontant() {
@@ -32,11 +32,11 @@ public class VenteGridItem {
         this.libelleProduit = libelleProduit;
     }
 
-    public int getQtProduit() {
-        return qtProduit;
+    public String getDateProduit() {
+        return dateProduit;
     }
 
-    public void setQtProduit(int qtProduit) {
-        this.qtProduit = qtProduit;
+    public void setDateProduit(String dateProduit) {
+        this.dateProduit = dateProduit;
     }
 }

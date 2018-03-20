@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sad.tpharma.R;
-import com.example.sad.tpharma.entite.HistoriqueItem;
+import com.example.sad.tpharma.entite.FactureGrossisteItem;
 
 import java.util.ArrayList;
 
@@ -18,9 +18,9 @@ public class FactureFournisseurGridAdapter extends BaseAdapter{
 
     Context c;
     int layout;
-    ArrayList<HistoriqueItem> items;
+    ArrayList<FactureGrossisteItem> items;
 
-    public FactureFournisseurGridAdapter(Context c, int layout, ArrayList<HistoriqueItem> items) {
+    public FactureFournisseurGridAdapter(Context c, int layout, ArrayList<FactureGrossisteItem> items) {
         this.c = c;
         this.layout = layout;
         this.items = items;
@@ -53,22 +53,22 @@ public class FactureFournisseurGridAdapter extends BaseAdapter{
             gridV = new View(c);
             gridV = inflater.inflate(layout, null);
 
-            final HistoriqueItem item = (HistoriqueItem) getItem(position);
-            TextView libelleProduit = (TextView) gridV.findViewById(R.id.libelleFourn);
+            final FactureGrossisteItem item = (FactureGrossisteItem) getItem(position);
+            TextView lvNumeroFacture = (TextView) gridV.findViewById(R.id.numeroFacture);
             TextView montant = (TextView) gridV.findViewById(R.id.montant);
-            TextView codeProd = (TextView) gridV.findViewById(R.id.codeFactureFourn);
+            TextView lvGrossiste = (TextView) gridV.findViewById(R.id.grossiste);
             TextView date = (TextView) gridV.findViewById(R.id.date);
 
             //Chargement
-            libelleProduit.setText(item.getLibelle());
+            lvNumeroFacture.setText(item.getNumeroFacture());
             montant.setText(String.valueOf(item.getMontant())+" GNF");
-            codeProd.setText(item.getCodeProd());
-            date.setText(item.getDate());
+            lvGrossiste.setText(item.getGrossiste());
+            date.setText(item.getDateFacture());
 
             gridV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(c, "sadou", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, item.getGrossiste(), Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
